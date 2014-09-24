@@ -1,8 +1,7 @@
 Buzz
 ====
 
-Buzz is a small project used for  "Graduation Project" in FPT Polytechnic Ha Noi
-
+Buzz is a small project used for  "Graduation Project" in FPT Polytechnic Ha Noi, it help  communicate developers and manage project a way easy
 
 
 License
