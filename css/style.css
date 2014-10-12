@@ -33,7 +33,7 @@ nav ul.navbar-nav>li>a{
 	left: 50%;
 	top:5px;
 	margin-left: -41px;
-};
+}
 
 .nav .open>a, .nav .open>a:hover, .nav .open>a:focus{
 	background:none !important;
