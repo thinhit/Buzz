@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('Buzz')
-    .controller('HomeCtrl', ['$scope', function ($scope) {
+    .controller('HomeCtrl', ['$scope', '$state', function ($scope, $state) {
+        $scope.conversionLoaded = false;
+        $scope.selectedGroup = {};
         $scope.conversionGroup = [
             {
                 id: 1,
@@ -14,13 +16,13 @@ angular.module('Buzz')
                     username: "thinhit",
                     avatar: "images/avt.jpg"
                 },
-                last_conversion:{
+                last_conversion: {
                     user: {
                         fullname: "Thinh Nguyen",
                         username: "thinhit",
                         avatar: "images/avt.jpg"
                     },
-                    message:"Chao` ca nha :) ",
+                    message: "Chao` ca nha :) ",
                     create_at: new Date()
                 }
             },
@@ -35,13 +37,13 @@ angular.module('Buzz')
                     username: "thinhit",
                     avatar: "images/avt.jpg"
                 },
-                last_conversion:{
+                last_conversion: {
                     user: {
                         fullname: "Thinh Nguyen",
                         username: "thinhit",
                         avatar: "images/avt.jpg"
                     },
-                    message:"Chao` ca nha :) ",
+                    message: "Chao` ca nha :) ",
                     create_at: new Date()
                 }
             },
@@ -56,13 +58,13 @@ angular.module('Buzz')
                     username: "thinhit",
                     avatar: "images/avt.jpg"
                 },
-                last_conversion:{
+                last_conversion: {
                     user: {
                         fullname: "Thinh Nguyen",
                         username: "thinhit",
                         avatar: "images/avt.jpg"
                     },
-                    message:"Chao` ca nha :) ",
+                    message: "Chao` ca nha :) ",
                     create_at: new Date()
                 }
             },
@@ -77,15 +79,27 @@ angular.module('Buzz')
                     username: "thinhit",
                     avatar: "images/avt.jpg"
                 },
-                last_conversion:{
+                last_conversion: {
                     user: {
                         fullname: "Thinh Nguyen",
                         username: "thinhit",
                         avatar: "images/avt.jpg"
                     },
-                    message:"Chao` ca nha :) ",
+                    message: "Chao` ca nha :) ",
                     create_at: new Date()
                 }
             }
-        ]
+        ];
+
+
+        /*if ($state.params.conversionId && $state.params.conversionId !== "") {
+            angular.forEach($scope.conversionGroup, function (v) {
+                if (v.id == $state.params.conversionId) {
+                    $scope.selectedGroup = {
+                        name: v.name
+                    }
+                }
+            })
+        }*/
+
     }]);

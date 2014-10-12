@@ -8,7 +8,8 @@ angular
         'ngRoute',
         'ngSanitize',
         'ngTouch',
-        'ui.router'
+        'ui.router',
+        'angularMoment'
     ])
     .config(['$routeProvider', '$stateProvider', '$urlRouterProvider', function ($routeProvider, $stateProvider, $urlRouterProvider) {
         $stateProvider
@@ -33,8 +34,8 @@ angular
 
             })
             .state('buzz.setting', {
-                url: "/setting",
-                templateUrl: "views/setting.html",
+                url: "/settings",
+                templateUrl: "views/settings.html",
                 controller: 'ConversionCtrl'
             });
 

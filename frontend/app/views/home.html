@@ -1,50 +1,9 @@
 <!--
     // Create a factory for a collection , define function and storage data
 -->
-<header>
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="text-center" id='brand-name'>
-                Buzz
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-                <!-- <li><a href="#">Link</a></li> -->
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img class="member-avatar" height="25" width="25"
-                             src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
-                             alt="Nguyễn Thịnh (thinhnv)" title="Nguyễn Thịnh (thinhnv)">
-                        Thịnh Nguyễn <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Thông tin cá nhân</a></li>
-                        <li><a href="#">Cài đặt</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Thoát</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
-</header>
 
 
-<section class="container-fluid" id="wrapper">
+
     <section class="row">
         <section class="col-md-3" id="listGroupBox">
 
@@ -59,7 +18,7 @@
                 </div>
             </section>
 
-            <section id="listGroup" class="media-list row">
+            <section id="listGroup" class="media-list row" nice-scroll fix-size>
 
                 <div class="media " ng-repeat="group in conversionGroup | filter: searchConversionGroup"
                      ui-sref-active="active" ui-sref="buzz.home.conversion({conversionId: group.id})">
@@ -70,7 +29,7 @@
 
                     <div class="media-body">
                         <h4 class="media-heading">{{group.name}}
-                            <small>{{group.last_conversion.create_at}}</small>
+                            <small am-time-ago="group.last_conversion.create_at"></small>
                         </h4>
                         <p>{{group.last_conversion.message}}
                         </p>
@@ -97,7 +56,7 @@
             </section>
 
             <article id="mainMessage">
-                <div class="wrap">
+                <div class="wrap" nice-scroll fix-size size="110">
                     <div ui-view="messageBox"></div>
                 </div>
 
@@ -202,41 +161,8 @@
             </div>
         </section>
     </section>
-</section>
+
 
 <script type="text/javascript">
-    $(document).ready(function () {
 
-        var wrapper = $("#wrapper"),
-                messsageBox = $("#mainMessage .wrap"),
-                listGroup = $("#listGroup"),
-                changeMessageBoxSize,
-                changelistGroupSize;
-
-        messsageBox.niceScroll({
-            cursorcolor: "#cdcdcd",
-            boxzoom: false
-        });
-
-        listGroup.niceScroll({
-            cursorcolor: "#cdcdcd"
-        });
-
-        changeMessageBoxSize = function () {
-            messsageBox.height(wrapper.height() - 200);
-        };
-
-        changelistGroupSize = function () {
-            listGroup.height(wrapper.height() - 90);
-        };
-
-
-        $(window).resize(function () {
-            changelistGroupSize();
-            changeMessageBoxSize();
-        });
-
-        changelistGroupSize();
-        changeMessageBoxSize();
-    })
 </script>

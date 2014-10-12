@@ -9,7 +9,9 @@
  */
 angular.module('Buzz')
     .controller('ConversionCtrl', function ($scope) {
+
         $scope.conversionLoaded = false;
+
         setTimeout(function () {
             console.log('helo');
             $scope.conversionLoaded = true;
