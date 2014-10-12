@@ -2,10 +2,14 @@ body{
 	font-family: Tahoma;
 	font-size:12px;
 	line-height: 22px;
+	background: #f2f2f2;
 }
 
 nav{
+	color:white;
 	position: relative;
+	background:#3498db!important;
+	height:34px;
 }
 nav.navbar-default{
 	border:none;
@@ -17,18 +21,165 @@ nav.navbar-default{
 
 }
 
-nav ul li a{
-	padding-top:10px !important;
-	padding-bottom: 10px !important;
+nav ul.navbar-nav>li>a{
+	color:white !important;
+	padding-top:5px !important;
+	padding-bottom: 4px !important;
 }	
 
 #brand-name{
 	position: absolute;
 	font-size:20px;
 	left: 50%;
-	top:10px;
+	top:5px;
 	margin-left: -41px;
-
 };
 
+.nav .open>a, .nav .open>a:hover, .nav .open>a:focus{
+	background:none !important;
+	border:none;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus{
+	background:none;
+}
 
+
+#wrapper{
+	background:white;
+	margin: 10px;
+	border-radius:3px;
+	box-shadow: 0 2px 0px #fdfdfd;
+	position: absolute;
+	bottom:10px;
+	top:50px;
+	overflow: hidden;
+}
+#wrapper #messageBox{
+	border-right: 1px solid #f2f2f2;
+	border-left: 1px solid #f2f2f2;
+}
+#wrapper #listGroup{
+	overflow-y: scroll;
+}
+#wrapper #listGroup .media{
+	border-bottom:1px solid #f2f2f2;
+}
+
+#wrapper #listGroup .media img.media-object{
+	vertical-align: middle;
+	width:50px;
+	padding-top:15px;
+}
+#wrapper #listGroup .media h4.media-heading{
+	font-size:13px;
+	font-weight: bold;
+}
+
+#wrapper #listGroup .media h4.media-heading small{
+	float:right;
+	line-height: 15px
+}
+#wrapper #listGroup .media{
+	padding: 10px;
+	margin-top:0px;
+
+}
+#wrapper #listGroup .media:hover{
+	cursor: pointer;
+	background:#fafafa;
+}
+#wrapper #listGroup .media.active{
+	background:#fafafa;	
+	border-right:2px solid #ff7108;
+}
+
+#wrapper #listGroupControl{
+	height:90px;
+	border-bottom:1px solid #f2f2f2;
+}
+
+#wrapper #listGroupControl .btn-create{
+	background:#a8dcff;
+	border:none;
+	color:white;
+	margin:10px 10px 0px 10px;
+}
+
+#wrapper #listGroupControl form {
+	margin:10px 10px;
+}
+
+#wrapper #listGroupControl .searchBtn {
+	height:27px;
+	box-shadow:none !important;
+	border:0!important;
+	background:#f0f0f0;
+	border-radius: 3px;
+}
+#wrapper #listGroupControl .searchBtn:focus  {
+	box-shadow:none !important;
+}
+
+
+
+
+#wrapper #messageBox #messageBoxControl{
+	height:90px;
+	border-bottom:1px solid #f2f2f2;
+}
+
+#wrapper #messageBox #messageBoxControl{
+	padding-left:20px;
+}
+
+#wrapper #messageBox #messageBoxControl .list-member .list-inline > li {
+	padding-left:5px;
+	padding-right:0px;
+}
+#wrapper #messageBox #messageBoxControl h4{
+	padding-top:10px;
+	
+}
+
+#wrapper #messageBox .message-item{
+	max-width: 90%;
+}
+#wrapper #messageBox #mainMessage{
+	padding-top:20px;
+}
+
+#wrapper #activityBox .btn-create{
+	margin-top:20px;
+	margin-bottom: 10px;
+}
+#wrapper #activityBox #listActivity .activity-date{
+	line-height: 12px;
+	margin:0;
+}
+#wrapper #activityBox #listActivity .media-object{
+	margin-top: 5px;
+}
+#wrapper #activityBox #listActivity .media{
+	margin:0px!important;
+	padding-top:0px;
+}
+
+#mainMessage{
+	position: relative;
+}
+#mainMessage .wrap{
+	/* position: absolute; */
+	/* height:400px; */
+	overflow-y: scroll;
+}
+#wrapper #messageBox #message-send{
+	margin-top:10px;
+}
+#wrapper #messageBox #message-send textarea{
+	height: 75px;
+	width:100%;
+	box-shadow: none !important;
+	border: 0px none !important;
+	background: none repeat scroll 0% 0% #F0F0F0;
+	border-radius: 3px;
+}
