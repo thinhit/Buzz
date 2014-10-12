@@ -23,4 +23,16 @@ angular.module('Buzz')
             }
         }
     }
-    ]);
+    ])
+
+    .directive('scrollToBottom', ['$window', function ($window) {
+        return {
+            restrict: 'A',
+            link: function (scope, ele, attrs) {
+                var win = angular.element($window);
+                win.bind("resize", function (e) {
+                    ele.scrollTop(ele[0].scrollHeight);
+                });
+            }
+        }
+    }]);

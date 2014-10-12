@@ -8,7 +8,7 @@
         <section class="col-md-3" id="listGroupBox">
 
             <section id="listGroupControl" class="row">
-                <button class="btn btn-primary btn-create"><span class="glyphicon glyphicon-plus"></span>&nbsp;Tạo mới
+                <button class="btn btn-primary btn-create" data-toggle="modal" data-target="#modal-create-group"><span class="glyphicon glyphicon-plus"></span>&nbsp;Tạo mới
                 </button>
                 <div id="search">
                     <form action="" class="form">
@@ -20,9 +20,9 @@
 
             <section id="listGroup" class="media-list row" nice-scroll fix-size>
 
-                <div class="media " ng-repeat="group in conversionGroup | filter: searchConversionGroup"
+                <div class="media " ng-repeat="group in conversionChanel | filter: searchConversionGroup"
                      ui-sref-active="active" ui-sref="buzz.home.conversion({conversionId: group.id})">
-                    <a class="pull-left" href="#">
+                    <a class="pull-left" href="">
                         <img class="media-object img-circle" ng-src="{{group.last_conversion.user.avatar}}" alt="..."
                              style="width:40px">
                     </a>
@@ -35,7 +35,7 @@
                         </p>
                     </div>
                 </div>
-                <p ng-show="(conversionGroup | filter:searchConversionGroup).length == 0">Không có kết quả nào được tìm thấy !</p>
+                <p ng-show="(conversionChanel | filter:searchConversionGroup).length == 0">Không có kết quả nào được tìm thấy !</p>
             </section>
         </section>
 
@@ -46,17 +46,16 @@
 
                 <div class="list-member">
                     <ul class="list-inline">
-                        <li><a href="#"><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
-                        <li><a href="#"><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
-                        <li><a href="#"><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
-                        <li><a href="#"><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
+                        <li><a href=""><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
+                        <li><a href=""><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
+                        <li><a href=""><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
+                        <li><a href=""><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
                     </ul>
-
-                </div>
+`              </div>
             </section>
 
             <article id="mainMessage">
-                <div class="wrap" nice-scroll fix-size size="110">
+                <div class="wrap" nice-scroll fix-size data-size="110" scroll-to-bottom>
                     <div ui-view="messageBox"></div>
                 </div>
 
@@ -78,7 +77,7 @@
                     <p class="activity-date">
                         <small>3 tiếng trước</small>
                     </p>
-                    <a class="pull-left" href="#">
+                    <a class="pull-left" href="">
                         <img class="media-object"
                              src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
                              alt="..."
@@ -94,24 +93,7 @@
                     <p class="activity-date">
                         <small>3 tiếng trước</small>
                     </p>
-                    <a class="pull-left" href="#">
-                        <img class="media-object"
-                             src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
-                             alt="..."
-                             width="30px" height="30px">
-                    </a>
-
-                    <div class="media-body">
-                        <p><b class="author-name">Thinh Nguyen</b> đã đính kèm một tệp express.pdf </p>
-                    </div>
-                </div>
-
-
-                <div class="media">
-                    <p class="activity-date">
-                        <small>3 tiếng trước</small>
-                    </p>
-                    <a class="pull-left" href="#">
+                    <a class="pull-left" href="">
                         <img class="media-object"
                              src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
                              alt="..."
@@ -128,7 +110,7 @@
                     <p class="activity-date">
                         <small>3 tiếng trước</small>
                     </p>
-                    <a class="pull-left" href="#">
+                    <a class="pull-left" href="">
                         <img class="media-object"
                              src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
                              alt="..."
@@ -145,7 +127,24 @@
                     <p class="activity-date">
                         <small>3 tiếng trước</small>
                     </p>
-                    <a class="pull-left" href="#">
+                    <a class="pull-left" href="">
+                        <img class="media-object"
+                             src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
+                             alt="..."
+                             width="30px" height="30px">
+                    </a>
+
+                    <div class="media-body">
+                        <p><b class="author-name">Thinh Nguyen</b> đã đính kèm một tệp express.pdf </p>
+                    </div>
+                </div>
+
+
+                <div class="media">
+                    <p class="activity-date">
+                        <small>3 tiếng trước</small>
+                    </p>
+                    <a class="pull-left" href="">
                         <img class="media-object"
                              src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
                              alt="..."
@@ -163,6 +162,5 @@
     </section>
 
 
-<script type="text/javascript">
 
-</script>
+<ng-include src="'views/partials/create-conversion-group-modal.html'"></ng-include>
