@@ -42,7 +42,7 @@ angular
         $urlRouterProvider.otherwise("/home");
     }])
     .run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
-        console.log('Application starting !!!')
+        console.log('Application starting !!!');
 
 
     }]);

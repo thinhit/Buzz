@@ -3,7 +3,7 @@ angular.module('Buzz')
         return {
             restrict: 'A',
             link: function (scope, ele, attrs) {
-                setTimeout(function (){
+                setTimeout(function () {
                     $(ele).niceScroll({
                         cursorcolor: "#cdcdcd",
                         boxzoom: false
@@ -21,13 +21,10 @@ angular.module('Buzz')
                 $(window).resize(function () {
                     ele.height($('#wrapper').height() - size);
                 });
-
                 ele.height($('#wrapper').height() - size);
-
             }
         }
-    }
-    ])
+    }])
 
     .directive('scrollToBottom', ['$window', function ($window) {
         return {
@@ -39,4 +36,22 @@ angular.module('Buzz')
                 });
             }
         }
-    }]);
+    }])
+    .directive('enterSubmit', function () {
+        return {
+            restrict: 'A',
+            link: function (scope, elem, attrs) {
+
+                elem.bind('keydown', function (event) {
+                    var code = event.keyCode || event.which;
+
+                    if (code === 13) {
+                        if (!event.shiftKey) {
+                            event.preventDefault();
+                            scope.$apply(attrs.enterSubmit);
+                        }
+                    }
+                });
+            }
+        }
+    });
