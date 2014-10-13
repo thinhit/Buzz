@@ -1,12 +1,15 @@
 angular.module('Buzz')
-    .directive('niceScroll', [ function () {
+    .directive('niceScroll', [ '$window', function ($window) {
         return {
             restrict: 'A',
             link: function (scope, ele, attrs) {
-                $(ele).niceScroll({
-                    cursorcolor: "#cdcdcd",
-                    boxzoom: false
-                })
+                setTimeout(function (){
+                    $(ele).niceScroll({
+                        cursorcolor: "#cdcdcd",
+                        boxzoom: false
+                    })
+                }, 0)
+
             }
         }
     }])
@@ -20,6 +23,7 @@ angular.module('Buzz')
                 });
 
                 ele.height($('#wrapper').height() - size);
+
             }
         }
     }
