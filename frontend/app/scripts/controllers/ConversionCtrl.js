@@ -17,4 +17,5 @@ angular.module('Buzz')
             $scope.conversionLoaded = true;
             $scope.$apply();
         }, 1000);
+
     });

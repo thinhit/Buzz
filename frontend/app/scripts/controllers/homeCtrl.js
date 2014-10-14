@@ -57,19 +57,6 @@ angular.module('Buzz')
             });
 
 
-
-
-
-
-            /*if ($state.params.conversionId && $state.params.conversionId !== "") {
-             angular.forEach($scope.conversionGroup, function (v) {
-             if (v.id == $state.params.conversionId) {
-             $scope.selectedGroup = {
-             name: v.name
-             }
-             }
-             })
-             }*/
             $scope.hehe = function (item) {
                 console.log('enterSubmit', item);
             }
