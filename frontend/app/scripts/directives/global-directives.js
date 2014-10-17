@@ -3,12 +3,12 @@ angular.module('Buzz')
         return {
             restrict: 'A',
             link: function (scope, ele, attrs) {
-                setTimeout(function () {
+
                     $(ele).niceScroll({
                         cursorcolor: "#cdcdcd",
                         boxzoom: false
                     })
-                }, 0)
+
 
             }
         }
@@ -26,14 +26,19 @@ angular.module('Buzz')
         }
     }])
 
-    .directive('scrollToBottom', ['$window', function ($window) {
+    .directive('scrollToBottom', ['$window', '$rootScope', function ($window, $rootScope) {
         return {
             restrict: 'A',
             link: function (scope, ele, attrs) {
                 var win = angular.element($window);
+
                 win.bind("resize", function (e) {
                     ele.scrollTop(ele[0].scrollHeight);
                 });
+
+                ele.scrollTop(ele[0].scrollHeight);
+
+
             }
         }
     }])

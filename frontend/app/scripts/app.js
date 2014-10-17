@@ -36,7 +36,7 @@ angular
             .state('buzz.setting', {
                 url: "/settings",
                 templateUrl: "views/settings.html",
-                controller: 'ConversionCtrl'
+                /*controller: 'ConversionCtrl'*/
             });
 
         $urlRouterProvider.otherwise("/home");

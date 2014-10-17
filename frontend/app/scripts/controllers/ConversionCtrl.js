@@ -8,14 +8,15 @@
  * Controller of the frontendApp
  */
 angular.module('Buzz')
-    .controller('ConversionCtrl', function ($scope) {
+    .controller('ConversionCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
 
         $scope.conversionLoaded = false;
 
         setTimeout(function () {
-            console.log('helo');
             $scope.conversionLoaded = true;
             $scope.$apply();
+
         }, 1000);
 
-    });
+
+    }]);
