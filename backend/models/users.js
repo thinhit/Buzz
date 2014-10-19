@@ -46,5 +46,11 @@
             callback(err, resp);
         })
     }
+    return {
+        getUserInfo : _getUserInfo,
+        updateUserInfo: _updateUserInfo,
+        register: _registerUser,
+        login: _login
+    }
 
 })();
