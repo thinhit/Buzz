@@ -41,7 +41,7 @@ angular
 
         $urlRouterProvider.otherwise("/home");
     }])
-    .run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
+    .run(['$rootScope', '$state', '$stateParams', '$socket' , function ($rootScope, $state, $stateParams, $socket) {
         console.log('Application starting !!!');
 
 

@@ -3,11 +3,12 @@ angular.module('Buzz')
         return {
             restrict: 'A',
             link: function (scope, ele, attrs) {
-
+                setTimeout(function () {
                     $(ele).niceScroll({
                         cursorcolor: "#cdcdcd",
                         boxzoom: false
                     })
+                }, 0)
 
 
             }

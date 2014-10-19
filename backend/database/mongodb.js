@@ -22,7 +22,7 @@
         lastname: {type: String, required: true},
         email: {type: String, required: true},
         username: {type: String, required: true},
-        avarta: {type: String},
+        avatar: {type: String},
         password: {type: String, required: true, setter: function (value) {
             return crypto.createHash('md5').update(value).digest('hex');
         }},
