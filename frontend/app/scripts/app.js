@@ -31,12 +31,19 @@ angular
                         controller: 'ConversionCtrl'
                     }
                 }
-
             })
             .state('buzz.setting', {
                 url: "/settings",
                 templateUrl: "views/settings.html"
                 /*controller: 'ConversionCtrl'*/
+            })
+            .state('login', {
+                url: "/login",
+                templateUrl: "views/login.html"
+            })
+            .state('register', {
+                url: "/register",
+                templateUrl: "views/register.html"
             })
             .state('buzz.setting.userInfo', {
                 url: "/user-info",
