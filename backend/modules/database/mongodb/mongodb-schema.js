@@ -4,39 +4,19 @@
 
     var mongoDBSchema = {},
         mongoose = require('mongoose'),
-        ObjectId = mongoose.Schema.Types.ObjectId;
+        ObjectId = mongoose.Schema.Types.ObjectId,
+        Schema = mongoose.Schema;
 
 
     // Defined Database
 
-    var notificationSchema = mongoose.Schema({
-        from: {type: String, required: true},
-        to: {type: String, required: true},
-        shortContent: {type: String, required: true},
-        longContent: {type: String, required: true},
-        time: {type: Date, default: Date.now}
-    }, {
-        toObject: {
-            virtuals: true
-        },
-        toJSON: {
-            virtuals: true
-        }
-    });
 
-    notificationSchema.statics.getPopulation = function () {
-        return [
-            /*['category', '*']*/
-        ];
-    };
-
-
-
-    var Notifications = mongoose.model('Notifications', notificationSchema);
-
-
-    var userSchema = mongoose.Schema({
-        username :{type: String, required: false},
+    var userSchema = new Schema({
+        firstname: {type: String, required: true},
+        lastname: {type: String, required: true},
+        avatar: {type: String},
+        email: {type: String, required: true},
+        username: {type: String, required: false},
         hash: {type: String, required: true},
         salt: {type: String, required: true},
         role: {type: String, required: true, default: 'user'}
@@ -51,9 +31,63 @@
 
     var Users = mongoose.model('Users', userSchema);
 
+    var roomSchema = new Schema({
+        "name": {type: String, required: true},
+        "project": {type: ObjectId, required: true, ref: "Projects"},
+        "thumb": {type: String, required: true},
+        "create_at": {type: Date, default: new Date(), required: true},
+        "update_at": {type: Date, default: new Date()}
+    }, {
+        toObject: {
+            virtuals: true
+        },
+        toJSON: {
+            virtuals: true
+        }
+    });
+
+    mongoDBSchema.Rooms = mongoose.model('Rooms', roomSchema);
+
+
+    var projectSchema = new Schema({
+        "name": {type: String, required: true},
+        "creator": {type: ObjectId, required: true, ref: "Users"},
+        "thumb": {type: String, required: true},
+        "create_at": {type: Date, default: new Date(), required: true},
+        "update_at": {type: Date, default: new Date()}
+    }, {
+        toObject: {
+            virtuals: true
+        },
+        toJSON: {
+            virtuals: true
+        }
+    });
+
+    mongoDBSchema.Projects = mongoose.model('Projects', projectSchema);
+
+
+
+
+    var conversionSchema = new Schema({
+        user: {type: ObjectId, required: true, ref: "Users"},
+        chanel: {type: ObjectId, required: true, ref: "Chanels"},
+        message: {type: String, required: true},
+        create_at: {type: Date, default: new Date(), required: true},
+        update_at: {type: Date, default: new Date()}
+    }, {
+        toObject: {
+            virtuals: true
+        },
+        toJSON: {
+            virtuals: true
+        }
+    });
+
+    mongoDBSchema.Conversions = mongoose.model('Conversions', conversionSchema);
 
     mongoDBSchema.Users = Users;
-    mongoDBSchema.Notifications = Notifications;
+
 
     module.exports = mongoDBSchema;
 

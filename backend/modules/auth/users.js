@@ -73,7 +73,11 @@
     Users.register = function (req, res) {
 
         var username = req.body.username,
-            password = req.body.password;
+            password = req.body.password,
+            firstname = req.body.firstname,
+            lastname = req.body.lastname,
+            email = req.body.email;
+
 
         async.waterfall(
             [
@@ -92,6 +96,9 @@
 
                         var userInfo = {
                             username: username,
+                            firstname: firstname,
+                            lastname: lastname,
+                            email: email,
                             salt: salt,
                             hash: hash
                         };
@@ -119,7 +126,7 @@
 
     Users.logout = function (req, res) {
         var _token = req.headers.Authorization || req.query.token;
-        if(_token){
+        if (_token) {
             token.remove(_token);
         }
         res.send({
