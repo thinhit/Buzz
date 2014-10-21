@@ -6,11 +6,11 @@
         port: 8888,
         socketPort: 1234,
         db: {
-            mongodb: 'mongodb://vsoft.vn:27017/myApp',
+            mongodb: 'mongodb://localhost:27017/buzzapplication',
             redis: ''
         },
-        tokenSecret: 'vietnam-software-!@#!@#',
-        sessionSecret: 'vietnam-software-!@#!@#'
+        tokenSecret: 'buzz-!@#!@#',
+        sessionSecret: 'buzz-!@#!@#'
     };
 
     module.exports = initConfig;
