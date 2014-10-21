@@ -35,9 +35,19 @@ angular
             })
             .state('buzz.setting', {
                 url: "/settings",
-                templateUrl: "views/settings.html",
+                templateUrl: "views/settings.html"
                 /*controller: 'ConversionCtrl'*/
+            })
+            .state('buzz.setting.userInfo', {
+                url: "/user-info",
+                views: {
+                    "settingContainer":{
+                        templateUrl: 'views/settings/user-info.html'
+                    }
+                }
             });
+
+
 
         $urlRouterProvider.otherwise("/home");
     }])
