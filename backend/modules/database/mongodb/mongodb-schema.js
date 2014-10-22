@@ -52,7 +52,8 @@
     var projectSchema = new Schema({
         "name": {type: String, required: true},
         "creator": {type: ObjectId, required: true, ref: "Users"},
-        "thumb": {type: String, required: true},
+        "thumb": {type: String},
+        "member":{type: Array},
         "create_at": {type: Date, default: new Date(), required: true},
         "update_at": {type: Date, default: new Date()}
     }, {

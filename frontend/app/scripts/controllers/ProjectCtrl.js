@@ -10,7 +10,6 @@ angular.module('Buzz')
 
 
             $scope.selectProject = function (project){
-
                 window.localStorage.setItem('currentProject', project);
                 $state.go('buzz.home');
             }
