@@ -18,20 +18,23 @@ angular.module('Buzz').factory('$auth', function ($rootScope, $http) {
                     console.log('register error');
                 })
         },
-        login: function (item) {
+        login: function (item, callback) {
+            var me = this;
             $http.post(appAPI + '/login', {
                 username: item.username,
                 password: item.password
             })
                 .success(function (resp) {
-                    console.log('login success');
+                    me.setUser(resp);
+                    callback(null, resp);
+
                 })
                 .error(function (error) {
-                    console.log('login error');
+                    callback(error, null);
                 })
         },
         setUser: function (user) {
-            window.localStorage.setItem('userLogin', user);
+            window.localStorage.setItem('userLogin', JSON.stringify(user));
         }
     };
 });
