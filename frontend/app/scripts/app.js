@@ -16,6 +16,11 @@ angular
             .state('buzz', {
                 abstract: true,
                 url: "",
+                resolve: {
+                    isLogin: ['$auth', '$state', function ($auth, $state){
+
+                    }]
+                },
                 templateUrl: "views/buzz.html"
             })
             .state('buzz.home', {
@@ -42,9 +47,15 @@ angular
                 templateUrl: "views/login.html",
                 controller: 'LoginCtrl'
             })
+
             .state('register', {
                 url: "/register",
                 templateUrl: "views/register.html"
+            })
+            .state('buzz.project', {
+                url: "/project",
+                templateUrl: "views/projectList.html",
+                controller: "ProjectCtrl"
             })
             .state('buzz.setting.userInfo', {
                 url: "/user-info",
@@ -57,10 +68,15 @@ angular
 
 
 
-        $urlRouterProvider.otherwise("/home");
+        $urlRouterProvider.otherwise("/project");
     }])
     .run(['$rootScope', '$state', '$stateParams', '$socket' , function ($rootScope, $state, $stateParams, $socket) {
         console.log('Application starting !!!');
 
+        $rootScope.$on('$stateChangeStart',
+            function(event, toState, toParams, fromState, fromParams) {
 
+                /*event.preventDefault(); //prevents from resolving requested url
+                $state.go('login'); //redirects to 'home.other' state url*/
+            });
     }]);

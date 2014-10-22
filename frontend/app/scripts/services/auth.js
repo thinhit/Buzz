@@ -35,6 +35,10 @@ angular.module('Buzz').factory('$auth', function ($rootScope, $http) {
         },
         setUser: function (user) {
             window.localStorage.setItem('userLogin', JSON.stringify(user));
+        },
+        getUser: function () {
+            var user = window.localStorage.getItem('userLogin');
+            return JSON.parse(user);
         }
     };
 });
