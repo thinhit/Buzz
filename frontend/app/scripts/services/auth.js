@@ -1,7 +1,7 @@
 angular.module('Buzz').factory('$auth', function ($rootScope, $http) {
 
     return {
-        register: function (item) {
+        register: function (item, callback) {
             var registerInfo = {
                 firstname: item.firstname,
                 lastname: item.lastname,
@@ -12,10 +12,10 @@ angular.module('Buzz').factory('$auth', function ($rootScope, $http) {
 
             $http.post(appAPI + '/register', registerInfo)
                 .success(function (resp) {
-                    console.log('register success');
+                    callback(null, resp);
                 })
                 .error(function (error) {
-                    console.log('register error');
+                    callback(error, null);
                 })
         },
         login: function (item, callback) {
