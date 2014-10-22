@@ -4,6 +4,10 @@ angular.module('Buzz')
     .controller('LoginCtrl', ['$scope', '$state', '$http', '$auth',
         function ($scope, $state, $http, $auth) {
 
+            if($auth.getUser()){
+               $state.go('buzz.project');
+            }
+
             $scope.register = function (item) {
                 /*var registerInfo = {
                  firstname: item.firstname,
@@ -22,12 +26,13 @@ angular.module('Buzz')
             };
 
 
+
             $scope.login = function (item) {
                 $auth.login(item, function (err, resp) {
                     if(err){
                         alert('dang nhap khong thanh cong', err);
                     }else {
-                        alert('oke');
+                        $state.go('buzz.project');
                     }
                 })
             }

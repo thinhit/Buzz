@@ -1,5 +1,5 @@
 'use strict';
-var appAPI = 'http://localhost:8888'
+var appAPI = 'http://localhost:8888';
 angular
     .module('Buzz', [
         'ngAnimate',
