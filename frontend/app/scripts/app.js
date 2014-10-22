@@ -1,5 +1,5 @@
 'use strict';
-
+var appAPI = 'http://localhost:8888'
 angular
     .module('Buzz', [
         'ngAnimate',
@@ -39,7 +39,8 @@ angular
             })
             .state('login', {
                 url: "/login",
-                templateUrl: "views/login.html"
+                templateUrl: "views/login.html",
+                controller: 'LoginCtrl'
             })
             .state('register', {
                 url: "/register",
