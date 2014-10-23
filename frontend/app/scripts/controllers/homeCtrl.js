@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('Buzz')
-    .controller('HomeCtrl', ['$scope', '$state', '$http',
-        function ($scope, $state, $http) {
+    .controller('HomeCtrl', ['$scope', '$state', '$http', '$auth',
+        function ($scope, $state, $http, $auth) {
             $scope.conversionLoaded = false;
             $scope.selectedGroup = {};
             $scope.conversionChanel = [];
@@ -13,26 +13,15 @@ angular.module('Buzz')
 
 
             $scope.createNewChanel = function (chanel) {
+
+
+
+
                 var saveChanel =
                 {
-                    id: $scope.conversionChanel.length + 1,
-                    create_at: new Date(),
-                    update_at: new Date(),
-                    creator: {
-                        id: 1,
-                        fullname: "Thinh Nguyen",
-                        username: "thinhit",
-                        avatar: "images/avt.jpg"
-                    },
-                    last_conversion: {
-                        user: {
-                            fullname: "Thinh Nguyen",
-                            username: "thinhit",
-                            avatar: "images/avt.jpg"
-                        },
-                        message: "Chao` ca nha :) ",
-                        create_at: new Date()
-                    }
+                    name: chanel.name,
+                    creator: $auth.getUser().id,
+                    project:
                 };
                 angular.extend(saveChanel, chanel);
                 $scope.conversionChanel.push(saveChanel);

@@ -9,7 +9,8 @@ angular
         'ngSanitize',
         'ngTouch',
         'ui.router',
-        'angularMoment'
+        'angularMoment',
+        'ngTagsInput'
     ])
     .config(['$routeProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', function ($routeProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
         $stateProvider

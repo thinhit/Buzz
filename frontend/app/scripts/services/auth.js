@@ -47,6 +47,13 @@ angular.module('Buzz').factory('$auth', function ($rootScope, $http) {
         },
         clearUser: function (){
             window.localStorage.setItem('userLogin', null);
+        },
+        setCurrentProject : function (project){
+            window.localStorage.setItem('currentProject', JSON.stringify(project));
+        },
+        getCurrentProject: function (){
+            var project = window.localStorage.getItem('currentProject');
+            return (project) ? JSON.parse(project) : {}
         }
 
     };
