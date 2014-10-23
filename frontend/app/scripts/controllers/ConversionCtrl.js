@@ -14,6 +14,7 @@ angular.module('Buzz')
             $scope.conversionLoaded = false;
             $scope.conversionDatas = [];
 
+            $scope.$parent
             if ($state.params.conversionId == '') {
                 $state.go('buzz.home');
                 return null;
@@ -42,18 +43,20 @@ angular.module('Buzz')
 
             loadConversion();
 
-            $scope.sendMessage = function (message) {
+            $scope.$parent.sendMessage = function (message) {
                 var newMessage = {
                     user: $auth.getUser().id,
                     room: roomId,
                     message: message
                 };
 
-                $restful.post({table: "Conversions"}, newMessage, function (resp) {
-                    if (resp.success) {
+                $restful.save({table: "Conversions"}, newMessage, function (resp){
+                    if(resp.success){
                         console.log(resp);
+
                         $scope.conversionDatas.push(resp.data);
                     }
                 });
             }
+
         }]);
