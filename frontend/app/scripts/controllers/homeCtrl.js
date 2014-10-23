@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('Buzz')
-    .controller('HomeCtrl', ['$scope', '$state', '$http', '$auth',
-        function ($scope, $state, $http, $auth) {
+    .controller('HomeCtrl', ['$scope', '$state', '$http', '$auth', '$restful',
+        function ($scope, $state, $http, $auth, $restful) {
             $scope.conversionLoaded = false;
             $scope.selectedGroup = {};
             $scope.conversionChanel = [];
@@ -14,20 +14,24 @@ angular.module('Buzz')
 
             $scope.createNewChanel = function (chanel) {
 
-
-
-
                 var saveChanel =
                 {
                     name: chanel.name,
                     creator: $auth.getUser().id,
-                    project:
+                    project:$auth.getCurrentProject().id
                 };
-                angular.extend(saveChanel, chanel);
-                $scope.conversionChanel.push(saveChanel);
-                $state.go('buzz.home.conversion', {conversionId: saveChanel.id});
-                $('#modal-create-group').modal('hide');
-                $scope.newChanel = {};
+                console.log(saveChanel);
+                $restful.save({table: 'Rooms'}, saveChanel, function (resp){
+                   if(resp.success){
+                       $scope.conversionChanel.push(resp.data);
+
+                       $state.go('buzz.home.conversion', {conversionId: resp.data.id});
+                       $('#modal-create-group').modal('hide');
+                       $scope.newChanel = {};
+                   }
+                });
+
+
             };
 
             var getJSON = function (file, callback) {

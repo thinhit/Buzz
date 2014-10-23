@@ -35,7 +35,7 @@
         "name": {type: String, required: true},
         "project": {type: ObjectId, required: true, ref: "Projects"},
         "last_conversion": {type: ObjectId, ref: "Conversions"},
-        "thumb": {type: String, required: true},
+        "thumb": {type: String, required: false},
         "create_at": {type: Date, default: new Date(), required: true},
         "update_at": {type: Date, default: new Date()}
     }, {

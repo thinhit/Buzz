@@ -58,6 +58,7 @@
         expired.setHours(expired.getHours() + 5);
 
         var _user = {
+            id: req.user._id,
             fullname: req.user.firstname + ' ' + req.user.lastname,
             firstname: req.user.firstname,
             lastname: req.user.lastname,

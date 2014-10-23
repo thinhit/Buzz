@@ -13,8 +13,7 @@ angular.module('Buzz')
 
 
             $scope.selectProject = function (project) {
-                project = JSON.stringify(project);
-                window.localStorage.setItem('currentProject', project);
+                $auth.setCurrentProject(project);
                 $state.go('buzz.home');
             };
 
