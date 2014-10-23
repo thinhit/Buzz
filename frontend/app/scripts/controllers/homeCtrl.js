@@ -6,6 +6,7 @@ angular.module('Buzz')
             $scope.conversionLoaded = false;
             $scope.selectedGroup = {};
             $scope.conversionChanel = [];
+            $scope.sendMessage = null;
 
             $scope.newChanel = {
                 name: ''

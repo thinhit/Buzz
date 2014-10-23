@@ -71,7 +71,7 @@
 
     var conversionSchema = new Schema({
         user: {type: ObjectId, required: true, ref: "Users"},
-        chanel: {type: ObjectId, required: true, ref: "Chanels"},
+        room: {type: ObjectId, required: true, ref: "Rooms"},
         message: {type: String, required: true},
         create_at: {type: Date, default: new Date(), required: true},
         update_at: {type: Date, default: new Date()}
