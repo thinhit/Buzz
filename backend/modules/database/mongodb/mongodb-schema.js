@@ -34,7 +34,7 @@
     var roomSchema = new Schema({
         "name": {type: String, required: true},
         "project": {type: ObjectId, required: true, ref: "Projects"},
-        "last_conversion": {type: ObjectId, required: true, ref: "Conversions"},
+        "last_conversion": {type: ObjectId, ref: "Conversions"},
         "thumb": {type: String, required: true},
         "create_at": {type: Date, default: new Date(), required: true},
         "update_at": {type: Date, default: new Date()}
@@ -54,7 +54,7 @@
         "name": {type: String, required: true},
         "creator": {type: ObjectId, required: true, ref: "Users"},
         "thumb": {type: String},
-        "member":{type: Array},
+        "member": {type: Array},
         "create_at": {type: Date, default: new Date(), required: true},
         "update_at": {type: Date, default: new Date()}
     }, {
@@ -67,8 +67,6 @@
     });
 
     mongoDBSchema.Projects = mongoose.model('Projects', projectSchema);
-
-
 
 
     var conversionSchema = new Schema({
