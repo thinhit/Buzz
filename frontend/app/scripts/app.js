@@ -11,13 +11,13 @@ angular
         'ui.router',
         'angularMoment'
     ])
-    .config(['$routeProvider', '$stateProvider', '$urlRouterProvider', function ($routeProvider, $stateProvider, $urlRouterProvider) {
+    .config(['$routeProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', function ($routeProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
         $stateProvider
             .state('buzz', {
                 abstract: true,
                 url: "",
                 resolve: {
-                    isLogin: ['$auth', '$state', function ($auth, $state){
+                    isLogin: ['$auth', '$state', function ($auth, $state) {
 
                     }]
                 },
@@ -60,11 +60,44 @@ angular
             .state('buzz.setting.userInfo', {
                 url: "/user-info",
                 views: {
-                    "settingContainer":{
+                    "settingContainer": {
                         templateUrl: 'views/settings/user-info.html'
                     }
                 }
             });
+
+
+        var interceptor = ['$rootScope', '$q', '$location', function ($rootScope, $q, $location) {
+
+
+            var success = function (response) {
+                return response;
+            };
+
+            var error = function (response) {
+                var status = response.status;
+                var config = response.config;
+                var method = config.method;
+                var url = config.url;
+
+                if (400 <= status && status <= 499) {
+
+                    var errMsg = 'Method: ' + method + ', url: ' + url + ', status: ' + status;
+                    console.error(errMsg);
+                    if (status === 403 || status === 401) {
+                        $rootScope.$broadcast('unauthorize');
+                    }
+                }
+
+                return $q.reject(response);
+            };
+
+            return function (promise) {
+                return promise.then(success, error);
+            };
+        }];
+
+        $httpProvider.responseInterceptors.push(interceptor);
 
 
 
@@ -73,10 +106,15 @@ angular
     .run(['$rootScope', '$state', '$stateParams', '$socket' , function ($rootScope, $state, $stateParams, $socket) {
         console.log('Application starting !!!');
 
+
+        $rootScope.$on('unauthorize', function (){
+            console.log('$state unauthorize');
+            $state.go('login');
+        });
         $rootScope.$on('$stateChangeStart',
-            function(event, toState, toParams, fromState, fromParams) {
+            function (event, toState, toParams, fromState, fromParams) {
 
                 /*event.preventDefault(); //prevents from resolving requested url
-                $state.go('login'); //redirects to 'home.other' state url*/
+                 $state.go('login'); //redirects to 'home.other' state url*/
             });
     }]);

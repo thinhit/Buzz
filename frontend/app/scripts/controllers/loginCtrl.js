@@ -4,7 +4,7 @@ angular.module('Buzz')
     .controller('LoginCtrl', ['$scope', '$state', '$http', '$auth',
         function ($scope, $state, $http, $auth) {
 
-            if($auth.getUser()){
+            if($auth.getUser() && _.size($auth.getUser())){
                $state.go('buzz.project');
             }
 
