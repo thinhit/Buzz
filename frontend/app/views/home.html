@@ -31,7 +31,7 @@
                         <h4 class="media-heading">{{group.name}}
                             <small am-time-ago="group.last_conversion.create_at"></small>
                         </h4>
-                        <p>{{group.last_conversion.message || 'Không có nội dung chat trong nhóm này'}}
+                        <p>{{group.last_conversion.message | limitTo: 50  || 'Không có nội dung chat trong nhóm này'}}
                         </p>
                     </div>
                 </div>

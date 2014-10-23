@@ -49,13 +49,19 @@ angular.module('Buzz')
                     message: message
                 };
 
-                $restful.save({table: "Conversions"}, newMessage, function (resp){
-                    if(resp.success){
+                $restful.save({table: "Conversions"}, newMessage, function (resp) {
+                    if (resp.success) {
                         $scope.$parent.msg = "";
                         $scope.conversionDatas.push(resp.data);
 
-                        $restful.put({table: 'Rooms', id: roomId}, {last_conversion: resp.data.id}, function (resp){
-                            console.log(resp);
+                        $restful.put({table: 'Rooms', id: roomId}, {last_conversion: resp.data.id}, function (res) {
+                            angular.forEach($scope.$parent.conversionChanel, function (item) {
+                                if (item.id == res.data.id) {
+                                    item.last_conversion = res.data.last_conversion;
+                                    item.last_conversion = res.data.last_conversion;
+
+                                }
+                            })
                         })
                     }
                 });

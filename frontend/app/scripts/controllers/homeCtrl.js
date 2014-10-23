@@ -48,6 +48,7 @@ angular.module('Buzz')
                 $restful.get({table: "Rooms", filter: JSON.stringify(filter) }, function (resp){
                     if(resp.success){
                         $scope.conversionChanel = resp.data;
+
                     }
                 });
             };
