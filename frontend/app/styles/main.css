@@ -63,7 +63,7 @@ nav ul.navbar-nav>li>a{
 
 }
 #wrapper #listGroup{
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
 }
 #wrapper #listGroup .media{
     border-bottom:1px solid #f2f2f2;
@@ -146,7 +146,7 @@ nav ul.navbar-nav>li>a{
 }
 
 #wrapper #messageBox .message-item{
-    max-width: 90%;
+    /*max-width: 90%;*/
 }
 #wrapper #messageBox #mainMessage{
     padding-top:20px;
@@ -174,7 +174,7 @@ nav ul.navbar-nav>li>a{
 #mainMessage .wrap{
     /* position: absolute; */
     /* height:400px; */
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
 }
 #wrapper #messageBox #message-send{
     margin-top:10px;

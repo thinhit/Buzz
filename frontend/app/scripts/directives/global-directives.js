@@ -4,10 +4,7 @@ angular.module('Buzz')
             restrict: 'A',
             link: function (scope, ele, attrs) {
                 setTimeout(function () {
-                    $(ele).niceScroll({
-                        cursorcolor: "#cdcdcd",
-                        boxzoom: false
-                    })
+                    $(ele).mCustomScrollbar();
                 }, 0)
 
 
@@ -33,7 +30,7 @@ angular.module('Buzz')
             link: function (scope, ele, attrs) {
                 var win = angular.element($window);
 
-                win.bind("resize", function (e) {
+                ele.bind("resize", function (e) {
                     ele.scrollTop(ele[0].scrollHeight);
                 });
 
