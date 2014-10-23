@@ -53,7 +53,6 @@ angular.module('Buzz')
                     if(resp.success){
                         $scope.$parent.msg = "";
                         $scope.conversionDatas.push(resp.data);
-                        $scope.$apply();
                     }
                 });
             }

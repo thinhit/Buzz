@@ -5,6 +5,7 @@ angular.module('Buzz')
             link: function (scope, ele, attrs) {
                 setTimeout(function () {
                     $(ele).mCustomScrollbar();
+
                 }, 0)
 
 
@@ -30,11 +31,18 @@ angular.module('Buzz')
             link: function (scope, ele, attrs) {
                 var win = angular.element($window);
 
+                console.log('hello', ele[0].scrollHeight);
+
                 ele.bind("resize", function (e) {
                     ele.scrollTop(ele[0].scrollHeight);
+                    console.log('hello', ele[0].scrollHeight);
                 });
 
-                ele.scrollTop(ele[0].scrollHeight);
+                setTimeout(function (){
+                    ele.mCustomScrollbar("scrollTo","bottom");
+                    scope.$apply();
+                }, 0);
+
 
 
             }
@@ -51,6 +59,12 @@ angular.module('Buzz')
                     if (code === 13) {
                         if (!event.shiftKey) {
                             event.preventDefault();
+                            elem.mCustomScrollbar("update");
+                            setTimeout(function (){
+                                elem.mCustomScrollbar("scrollTo","bottom");
+                            }, 0);
+
+                            console.log('hello');
                             scope.$apply(attrs.enterSubmit);
                         }
                     }
