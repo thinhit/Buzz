@@ -35,6 +35,7 @@
         "name": {type: String, required: true},
         "project": {type: ObjectId, required: true, ref: "Projects"},
         "last_conversion": {type: ObjectId, ref: "Conversions"},
+        "creator": {type: ObjectId, ref: "Users"},
         "thumb": {type: String, required: false},
         "create_at": {type: Date, default: Date.now, required: true},
         "update_at": {type: Date, default: Date.now}
@@ -47,6 +48,12 @@
         }
     });
 
+    roomSchema.statics.getPopulation = function () {
+        return [
+            ['creator', 'firstname lastname avatar'],
+            ['last_conversion', 'message create_at user']
+        ];
+    };
     mongoDBSchema.Rooms = mongoose.model('Rooms', roomSchema);
 
 
@@ -66,6 +73,11 @@
         }
     });
 
+    projectSchema.statics.getPopulation = function () {
+        return [
+            ['creator', 'firstname lastname avatar']
+        ];
+    };
     mongoDBSchema.Projects = mongoose.model('Projects', projectSchema);
 
 
