@@ -34,6 +34,7 @@
     var roomSchema = new Schema({
         "name": {type: String, required: true},
         "project": {type: ObjectId, required: true, ref: "Projects"},
+        "last_conversion": {type: ObjectId, required: true, ref: "Conversions"},
         "thumb": {type: String, required: true},
         "create_at": {type: Date, default: new Date(), required: true},
         "update_at": {type: Date, default: new Date()}
