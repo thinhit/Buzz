@@ -23,7 +23,7 @@
                 <div class="media " ng-repeat="group in conversionChanel | filter: searchConversionGroup"
                      ui-sref-active="active" ui-sref="buzz.home.conversion({conversionId: group.id})">
                     <a class="pull-left" href="">
-                        <img class="media-object img-circle" ng-src="{{group.last_conversion.user.avatar}}" alt="..."
+                        <img class="media-object img-circle" ng-src="{{group.last_conversion.user.avatar || 'images/yeoman.png'}}" alt="..."
                              style="width:40px">
                     </a>
 
@@ -31,7 +31,7 @@
                         <h4 class="media-heading">{{group.name}}
                             <small am-time-ago="group.last_conversion.create_at"></small>
                         </h4>
-                        <p>{{group.last_conversion.message}}
+                        <p>{{group.last_conversion.message || 'Không có nội dung chat trong nhóm này'}}
                         </p>
                     </div>
                 </div>
