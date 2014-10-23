@@ -8,7 +8,7 @@
 <div class="row" style="margin:10px;">
 
     <div class="list-group col-md-3" ng-repeat="project in projectDatas">
-        <a ng-click="selectProject()" class="list-group-item ">
+        <a ng-click="selectProject(project)" class="list-group-item ">
             <h4 class="list-group-item-heading">{{project.name}}</h4>
             <p class="list-group-item-text">Thành viên : {{project.member.length}}</p>
         </a>
