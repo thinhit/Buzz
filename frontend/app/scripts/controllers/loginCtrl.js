@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('Buzz')
-    .controller('LoginCtrl', ['$scope', '$state', '$http', '$auth',
-        function ($scope, $state, $http, $auth) {
+    .controller('LoginCtrl', ['$scope', '$rootScope', '$state', '$http', '$auth',
+        function ($scope, $rootScope, $state, $http, $auth) {
 
-            if($auth.getUser() && _.size($auth.getUser())){
-               $state.go('buzz.project');
+
+            if ($auth.getUser() && _.size($auth.getUser())) {
+                $state.go('buzz.project');
             }
 
             $scope.register = function (item) {
@@ -26,13 +27,14 @@ angular.module('Buzz')
             };
 
 
-
             $scope.login = function (item) {
                 $auth.login(item, function (err, resp) {
-                    if(err){
+                    if (err) {
                         alert('dang nhap khong thanh cong', err);
-                    }else {
+                    } else {
+                        $rootScope.currentUser = resp;
                         $state.go('buzz.project');
+
                     }
                 })
             }

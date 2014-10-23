@@ -33,6 +33,10 @@ angular.module('Buzz').factory('$auth', function ($rootScope, $http) {
                     callback(error, null);
                 })
         },
+        logout: function (callback){
+            this.clearUser();
+            callback(null, 'oke');
+        },
         setUser: function (user) {
             window.localStorage.setItem('userLogin', JSON.stringify(user));
         },
@@ -40,6 +44,10 @@ angular.module('Buzz').factory('$auth', function ($rootScope, $http) {
             var user = window.localStorage.getItem('userLogin');
             return (user) ? JSON.parse(user) : {}
 
+        },
+        clearUser: function (){
+            window.localStorage.setItem('userLogin', null);
         }
+
     };
 });

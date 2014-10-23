@@ -100,17 +100,23 @@ angular
         $httpProvider.responseInterceptors.push(interceptor);
 
 
-
         $urlRouterProvider.otherwise("/project");
     }])
-    .run(['$rootScope', '$state', '$stateParams', '$socket' , function ($rootScope, $state, $stateParams, $socket) {
+    .run(['$rootScope', '$state', '$stateParams', '$socket', '$auth' , function ($rootScope, $state, $stateParams, $socket, $auth) {
         console.log('Application starting !!!');
 
+        $rootScope.currentUser = $auth.getUser();
 
-        $rootScope.$on('unauthorize', function (){
-            console.log('$state unauthorize');
-            $state.go('login');
+
+
+        $rootScope.$on('unauthorize', function () {
+            $auth.logout(function (err, resp){
+                $state.go('login');
+            });
         });
+
+
+
         $rootScope.$on('$stateChangeStart',
             function (event, toState, toParams, fromState, fromParams) {
 

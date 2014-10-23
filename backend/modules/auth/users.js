@@ -58,6 +58,10 @@
         expired.setHours(expired.getHours() + 5);
 
         var _user = {
+            fullname: req.user.firstname + ' ' + req.user.lastname,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname,
+            avatar: req.user.avatar,
             username: req.user.username,
             role: req.user.role,
             tokenExpired: expired,
