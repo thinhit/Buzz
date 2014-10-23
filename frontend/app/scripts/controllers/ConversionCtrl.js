@@ -53,6 +53,10 @@ angular.module('Buzz')
                     if(resp.success){
                         $scope.$parent.msg = "";
                         $scope.conversionDatas.push(resp.data);
+
+                        $restful.put({table: 'Rooms', id: roomId}, {last_conversion: resp.data.id}, function (resp){
+                            console.log(resp);
+                        })
                     }
                 });
             }

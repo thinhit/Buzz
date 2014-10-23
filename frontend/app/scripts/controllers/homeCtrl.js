@@ -22,6 +22,7 @@ angular.module('Buzz')
                     project: $auth.getCurrentProject().id
                 };
                 console.log(saveChanel);
+
                 $restful.save({table: 'Rooms'}, saveChanel, function (resp) {
                     if (resp.success) {
                         $scope.conversionChanel.push(resp.data);
@@ -53,25 +54,7 @@ angular.module('Buzz')
 
 
             $scope.getListRooms();
-            /*var getJSON = function (file, callback) {
-             $http.get('scripts/data/' + file + '.json').success(function (resp) {
-             callback(null, resp);
-             }).error(function (err) {
-             callback(err, null);
-             })
-             };*/
 
-
-            /*getJSON('chanels', function (err, resp){
-             if(err) throw err;
-             $scope.conversionChanel = resp;
-             $state.go('buzz.home.conversion', {conversionId: $scope.conversionChanel[0].id});
-             });*/
-
-
-            $scope.hehe = function (item) {
-                console.log('enterSubmit', item);
-            }
 
         }
     ])
