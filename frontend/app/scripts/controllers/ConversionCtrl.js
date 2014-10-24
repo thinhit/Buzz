@@ -69,7 +69,11 @@ angular.module('Buzz')
                         })
                     }
                 });
-            }
+            };
+
+            $socket.on('send:message', function (resp){
+                console.log('new message', resp)
+            })
 
 
         }]);
