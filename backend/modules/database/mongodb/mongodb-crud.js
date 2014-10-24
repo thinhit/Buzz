@@ -51,17 +51,41 @@
 
 
     mongodbCrud.readOne = function (mongoSchemaName, id, callback) {
+        var fn;
         if (_.isArray(id)) {
-            mongoSchemaName.findOne({'_id': { $in: id}}, function (err, docs) {
-                callback(err, docs)
-            })
+            fn = mongoSchemaName.findOne({'_id': { $in: id}});
         } else {
-            mongoSchemaName.findById(id, function (err, docs) {
-                callback(err, docs)
-            })
+            fn = mongoSchemaName.findById(id);
         }
 
 
+        var schemaPopulate = [];
+        if (mongoSchemaName.getPopulation != null) {
+            schemaPopulate = mongoSchemaName.getPopulation();
+        }
+
+
+        if (schemaPopulate.length > 0) {
+
+            for (var _i = 0, _len = schemaPopulate.length; _i < _len; _i++) {
+                var populate = schemaPopulate[_i];
+                var tableName = populate[0];
+                var fieldsName = populate[1];
+                if (fieldsName === '*') {
+                    fn.populate(tableName);
+                } else {
+                    fn.populate(tableName, fieldsName);
+                }
+            }
+
+            fn.exec(function (err, docs) {
+                callback(err, docs);
+            })
+        } else {
+            fn.exec(function (err, docs) {
+                callback(err, docs);
+            })
+        }
     };
 
     mongodbCrud.create = function (mongoSchemaName, data, callback) {

@@ -8,8 +8,8 @@
  * Controller of the frontendApp
  */
 angular.module('Buzz')
-    .controller('ConversionCtrl', ['$scope', '$rootScope', '$state', '$restful', '$auth',
-        function ($scope, $rootScope, $state, $restful, $auth) {
+    .controller('ConversionCtrl', ['$scope', '$rootScope', '$state', '$restful', '$auth', '$socket',
+        function ($scope, $rootScope, $state, $restful, $auth, $socket) {
 
             $scope.conversionLoaded = false;
             $scope.conversionDatas = [];
@@ -54,6 +54,10 @@ angular.module('Buzz')
                         $scope.$parent.msg = "";
                         $scope.conversionDatas.push(resp.data);
 
+                        $socket.emit('new:message', {
+                            conversionId: resp.data.id
+                        });
+
                         $restful.put({table: 'Rooms', id: roomId}, {last_conversion: resp.data.id}, function (res) {
                             angular.forEach($scope.$parent.conversionChanel, function (item) {
                                 if (item.id == res.data.id) {
@@ -66,5 +70,6 @@ angular.module('Buzz')
                     }
                 });
             }
+
 
         }]);

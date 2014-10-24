@@ -3,24 +3,24 @@
 (function () {
 
     var io = require('socket.io').listen(8889),
-        notify = require('./../notifications/handlers');
-
+        DBModel = require('./../database/mongodb'),
+        DBCrud = require('./../database/mongodb-crud');
 
     io.on('connection', function (socket) {
-        console.log('hello');
 
-        socket.on('socket', function (data) {
-            //var emit = 'socket:' + data.table + ':' + data.action;
-           socket.emit('new:socket', {data: 'hello'});
+        socket.on('new:message', function (msg) {
+            DBCrud.findOne(DBModel.Conversions, msg.conversionId, function (err, resp){
+                if(err){
+                    socket.emit('message:send:error');
+                }else {
+                    socket.broadcast.emit('send:message', resp);
+                }
+
+            })
+
         });
 
-        socket.on('user:connect', function (data){
-            console.log('useConnected', data);
-        });
 
-        notify.on('xinchao', function (data){
-            console.log('Notifications Push !', data);
-        })
     });
 
 
