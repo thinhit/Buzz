@@ -74,14 +74,16 @@ angular
                 templateUrl: "views/admin.html"
                 /*controller: 'ConversionCtrl'*/
             })
+
             .state('buzz.admin.project', {
                 url: "/project",
                 views: {
                     "settingContainer": {
-                        templateUrl: 'views/admin/project.html'
+                        templateUrl: 'views/admin/project.html',
+                        controller: 'manageProjectCtrl'
                     }
                 }
-            })
+            });
 
         var interceptor = ['$rootScope', '$q', '$location', function ($rootScope, $q, $location) {
 
