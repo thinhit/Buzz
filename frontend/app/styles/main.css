@@ -178,6 +178,17 @@ nav ul.navbar-nav>li>a{
 }
 #wrapper #messageBox #message-send{
     margin-top:10px;
+    position:relative;
+}
+#wrapper #messageBox #message-send .smileButton{
+    position: absolute;
+    top:3px;
+    right:3px;
+    background:none;
+    border:none;
+    width:30px;
+    height:30px;
+    font-size:20px;
 }
 #wrapper #messageBox #message-send textarea{
     height: 75px;
