@@ -32,10 +32,18 @@ angular.module('Buzz')
                     }
                 ];
 
-                $restful.get({table: 'Conversions', filter: JSON.stringify(filter)}, function (resp) {
+                var sort = [
+                    {
+                        property: 'create_at',
+                        direction: "DESC"
+                    }
+                ];
+
+                $restful.get({table: 'Conversions', filter: JSON.stringify(filter), sort: JSON.stringify(sort)}, function (resp) {
                     $scope.conversionLoaded = true;
                     if (resp.success) {
-                        $scope.conversionDatas = resp.data;
+
+                        $scope.conversionDatas = resp.data.reverse();
                     }
                 })
             };
@@ -62,8 +70,6 @@ angular.module('Buzz')
                             angular.forEach($scope.$parent.conversionChanel, function (item) {
                                 if (item.id == res.data.id) {
                                     item.last_conversion = res.data.last_conversion;
-                                    item.last_conversion = res.data.last_conversion;
-
                                 }
                             })
                         })
@@ -71,8 +77,20 @@ angular.module('Buzz')
                 });
             };
 
-            $socket.on('send:message', function (resp){
-                console.log('new message', resp)
+            $socket.on('send:message', function (resp) {
+                angular.forEach($scope.$parent.conversionChanel, function (item) {
+                    if (item.id == resp.room) {
+
+                        item.last_conversion.message = resp.message;
+                        item.last_conversion.create_at = resp.create_at;
+
+
+                    }
+                });
+
+                $scope.conversionDatas.push(resp);
+
+                console.log('new message', resp);
             })
 
 
