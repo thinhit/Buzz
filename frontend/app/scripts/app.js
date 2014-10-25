@@ -67,8 +67,21 @@ angular
                         templateUrl: 'views/settings/user-info.html'
                     }
                 }
-            });
+            })
 
+            .state('buzz.admin', {
+                url: "/admin",
+                templateUrl: "views/admin.html"
+                /*controller: 'ConversionCtrl'*/
+            })
+            .state('buzz.admin.project', {
+                url: "/project",
+                views: {
+                    "settingContainer": {
+                        templateUrl: 'views/admin/project.html'
+                    }
+                }
+            })
 
         var interceptor = ['$rootScope', '$q', '$location', function ($rootScope, $q, $location) {
 
