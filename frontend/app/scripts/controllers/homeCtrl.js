@@ -13,6 +13,7 @@ angular.module('Buzz')
             };
 
 
+
             $scope.createNewChanel = function (chanel) {
 
                 var saveChanel =
