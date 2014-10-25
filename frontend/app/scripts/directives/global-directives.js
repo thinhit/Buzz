@@ -4,8 +4,10 @@ angular.module('Buzz')
             restrict: 'A',
             link: function (scope, ele, attrs) {
                 setTimeout(function () {
-                    $(ele).mCustomScrollbar();
-
+                    $(ele).niceScroll({
+                        cursorcolor: "#cdcdcd",
+                        boxzoom: false
+                    })
                 }, 0)
 
 
@@ -34,12 +36,12 @@ angular.module('Buzz')
                 console.log('hello', ele[0].scrollHeight);
 
                 ele.bind("resize", function (e) {
-                    ele.scrollTop(ele[0].scrollHeight);
+                    ele.scrollTop(1000000);
                     console.log('hello', ele[0].scrollHeight);
                 });
 
                 setTimeout(function (){
-                    ele.mCustomScrollbar("scrollTo","bottom");
+                    ele.scrollTop(1000000);
                     scope.$apply();
                 }, 0);
 
@@ -59,10 +61,10 @@ angular.module('Buzz')
                     if (code === 13) {
                         if (!event.shiftKey) {
                             event.preventDefault();
-                            elem.mCustomScrollbar("update");
+                            /*elem.mCustomScrollbar("update");
                             setTimeout(function (){
                                 elem.mCustomScrollbar("scrollTo","bottom");
-                            }, 0);
+                            }, 0);*/
 
                             console.log('hello');
                             scope.$apply(attrs.enterSubmit);

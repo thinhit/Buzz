@@ -18,7 +18,7 @@
                     <div class="form-group">
                         <label>Thành viên</label>
                         <tags-input ng-model="newProject.members" display-property="name">
-                            <auto-complete source="listUserTags"></auto-complete>
+                            <auto-complete source="getTagUser()"></auto-complete>
                         </tags-input>
                         <!--<input type="text" class="form-control" ng-model="newProject.members">-->
                     </div>

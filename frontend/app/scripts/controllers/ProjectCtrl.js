@@ -24,10 +24,7 @@ angular.module('Buzz')
 
 
             $scope.getTagUser = function ($query){
-                console.log($query);
-                var defer = $q.defer();
-                defer.resolve($scope.listUserTags);
-                return defer.promise;
+                return $http.get('http://localhost:8888/api/Users?token='+ $auth.getUser().token);
                 /*$restful.get({
                     table: 'Users'
                 }, function (resp) {
