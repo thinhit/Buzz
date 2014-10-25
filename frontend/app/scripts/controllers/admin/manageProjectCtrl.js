@@ -1,8 +1,13 @@
 'use strict';
 
 angular.module('Buzz')
-    .controller('manageProjectCtrl', ['$scope', '$rootScope', '$state', '$http', '$auth',
-        function ($scope, $rootScope, $state, $http, $auth) {
+    .controller('manageProjectCtrl', ['$scope', '$rootScope', '$state', '$http', '$auth', '$restful',
+        function ($scope, $rootScope, $state, $http, $auth, $restful) {
 
-            console.log('manage project')
+            $scope.datasource = [];
+            $restful.get({table: "Projects"}, function (resp){
+                if(resp.success){
+                    $scope.datasource = resp.data;
+                }
+            })
         }]);

@@ -1,29 +1,33 @@
 <div class="row">
     <div class="col-md-12">
         <h4>
-            Danh sach du an
+            Danh sach dự án
         </h4>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Ten du an</th>
-                    <th>So thanh vien</th>
-                    <th>Ngay khoi tao</th>
-                    <th>Nguoi tao</th>
-                    <th>Action</th>
+                    <th>Tên dự án</th>
+                    <th>Thành viên</th>
+                    <th>Ngày khởi tạo</th>
+                    <th>Người tạo</th>
+                    <th>Sửa / Xóa</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
+                <tr ng-repeat="project in datasource">
+                    <td>{{$index + 1}}</td>
+                    <td>{{project.name}}</td>
+                    <td>{{project.member.length}}</td>
+                    <td>{{project.create_at | date}}</td>
+                    <td>{{project.creator.firstname + ' ' + project.creator.lastname}}</td>
+                    <td>
+                        <button class="btn btn-primary">Sửa</button>
+                        <button class="btn btn-danger">Xóa</button>
+                    </td>
                 </tr>
+
                 </tbody>
             </table>
         </div>
