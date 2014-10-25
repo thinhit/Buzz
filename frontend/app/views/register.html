@@ -28,7 +28,7 @@
             <label for="inputEmail3" class="col-sm-3 control-label">Họ</label>
 
             <div class="col-sm-9">
-                <input type="text" class="form-control" id="inputEmail3" ng-model="registerInfo.firstname">
+                <input type="text" class="form-control" id="inputEmail3" ng-model="registerInfo.firstname" required>
             </div>
         </div>
 
@@ -36,7 +36,7 @@
             <label for="inputEmail3" class="col-sm-3 control-label">Tên</label>
 
             <div class="col-sm-9">
-                <input type="text" class="form-control" id="inputEmail3" ng-model="registerInfo.lastname">
+                <input type="text" class="form-control" id="inputEmail3" ng-model="registerInfo.lastname" required>
             </div>
         </div>
 
@@ -44,7 +44,7 @@
             <label for="inputEmail3" class="col-sm-3 control-label">Tên tài khoản</label>
 
             <div class="col-sm-9">
-                <input type="text" class="form-control" id="inputEmail3" ng-model="registerInfo.username">
+                <input type="text" class="form-control" id="inputEmail3" ng-model="registerInfo.username" required>
             </div>
         </div>
 
@@ -52,20 +52,20 @@
             <label for="inputPassword3" class="col-sm-3 control-label">Mật khẩu</label>
 
             <div class="col-sm-9">
-                <input type="password" class="form-control" id="inputPassword3" ng-model="registerInfo.password">
+                <input type="password" class="form-control" id="inputPassword3" ng-model="registerInfo.password" required>
             </div>
         </div>
 
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-3 control-label">Địa chỉ email</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" id="inputEmail3" ng-model="registerInfo.email">
+                <input type="email" class="form-control" id="inputEmail3" ng-model="registerInfo.email" required>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-9">
-                <button type="submit" class="btn btn-primary" ng-click="register(registerInfo)">Đăng ký</button>
+                <button type="submit" class="btn btn-primary" ng-click="register(registerInfo)" >Đăng ký</button>
             </div>
         </div>
     </form>
