@@ -10,6 +10,7 @@ angular.module('Buzz')
             }
 
             $scope.register = function (item) {
+                console.log(item);
                 /*var registerInfo = {
                  firstname: item.firstname,
                  lastname: item.lastname,

@@ -51,7 +51,9 @@ angular
 
             .state('register', {
                 url: "/register",
-                templateUrl: "views/register.html"
+                templateUrl: "views/register.html",
+                controller: 'LoginCtrl'
+
             })
             .state('buzz.project', {
                 url: "/project",
@@ -109,6 +111,9 @@ angular
         $rootScope.currentUser = $auth.getUser();
 
 
+        $rootScope.logout = function (){
+
+        };
 
         $rootScope.$on('unauthorize', function () {
             $auth.logout(function (err, resp){

@@ -1,10 +1,73 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<header>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
 
-</body>
-</html>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="text-center" id='brand-name'>
+                Buzz
+            </div>
+        </div>
+        </div>
+    </nav>
+</header>
+<section class="col-md-4 col-md-offset-4" id="loginPage" style="margin-top:150px;background: white;border-radius: 3px;">
+    <h4 class="text-center">Đăng ký</h4>
+
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">Họ</label>
+
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputEmail3" ng-model="registerInfo.firstname">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">Tên</label>
+
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputEmail3" ng-model="registerInfo.lastname">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">Tên tài khoản</label>
+
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputEmail3" ng-model="registerInfo.username">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-3 control-label">Mật khẩu</label>
+
+            <div class="col-sm-9">
+                <input type="password" class="form-control" id="inputPassword3" ng-model="registerInfo.password">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">Địa chỉ email</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputEmail3" ng-model="registerInfo.email">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-primary" ng-click="register(registerInfo)">Đăng ký</button>
+            </div>
+        </div>
+    </form>
+</section>
+
