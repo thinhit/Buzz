@@ -106,21 +106,22 @@ angular
         $urlRouterProvider.otherwise("/project");
     }])
     .run(['$rootScope', '$state', '$stateParams', '$socket', '$auth' , function ($rootScope, $state, $stateParams, $socket, $auth) {
+
         console.log('Application starting !!!');
 
         $rootScope.currentUser = $auth.getUser();
 
 
-        $rootScope.logout = function (){
-
+        $rootScope.logout = function () {
+            window.localStorage.clear();
+            $state.go('buzz.home');
         };
 
         $rootScope.$on('unauthorize', function () {
-            $auth.logout(function (err, resp){
+            $auth.logout(function (err, resp) {
                 $state.go('login');
             });
         });
-
 
 
         $rootScope.$on('$stateChangeStart',
