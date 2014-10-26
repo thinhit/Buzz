@@ -29,11 +29,13 @@ angular.module('Buzz')
             $scope.createNewProject = function (projectInfo) {
                 var listId = [],
                     currentUser = $auth.getUser();
+
                 angular.forEach($scope.multipleDemo.selectedPeople, function (value, key){
                     listId.push(value.id);
                 });
 
                 listId.push(currentUser.id);
+
                 $restful.save({table: "Projects"}, {
                     name: projectInfo.name,
                     creator: currentUser.id,
@@ -51,6 +53,7 @@ angular.module('Buzz')
                     table: 'Users',
                     limit: 1000,
                     start: 0
+
                 }, function (resp) {
                     if (resp.success) {
                         $scope.listUserTags = resp.data;
@@ -59,9 +62,22 @@ angular.module('Buzz')
             };
 
 
+            var filter = [
+                {
+                    property: 'member',
+                    type: 'text',
+                    comparison:'eq',
+                    value: $auth.getUser().id
+
+                }
+            ];
             $restful.get({
-                table: 'Projects'
+                table: 'Projects',
+                filter: JSON.stringify(filter),
+                start: 0,
+                limit: 1000
             }, function (resp) {
+                $('#modal-create-project').modal('hide');
                 if (resp.success) {
                     $scope.projectDatas = resp.data;
                 }
