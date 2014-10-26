@@ -152,7 +152,7 @@ angular
 
         $rootScope.logout = function () {
             window.localStorage.clear();
-            $state.go('buzz.home');
+            $state.go('login');
         };
 
         $rootScope.$on('unauthorize', function () {
