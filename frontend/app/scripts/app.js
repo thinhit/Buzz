@@ -10,7 +10,8 @@ angular
         'ngTouch',
         'ui.router',
         'angularMoment',
-        'ngTagsInput'
+        'ngTagsInput',
+        'ui.select2'
     ])
     .config(['$routeProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', function ($routeProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
         $stateProvider
