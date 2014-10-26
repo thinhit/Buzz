@@ -94,7 +94,6 @@ angular.module('Buzz')
 
                 $scope.conversionDatas.push(resp);
 
-                console.log('new message', resp);
             })
 
 

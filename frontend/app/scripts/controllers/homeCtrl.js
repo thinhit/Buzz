@@ -22,7 +22,7 @@ angular.module('Buzz')
                     creator: $auth.getUser().id,
                     project: $auth.getCurrentProject().id
                 };
-                console.log(saveChanel);
+
 
                 $restful.save({table: 'Rooms'}, saveChanel, function (resp) {
 
@@ -50,6 +50,7 @@ angular.module('Buzz')
                 $restful.get({table: "Rooms", filter: JSON.stringify(filter) }, function (resp){
                     if(resp.success){
                         $scope.conversionChanel = resp.data;
+                        $state.go('buzz.home.conversion', {conversionId: $scope.conversionChanel[0].id});
 
                     }
                 });
