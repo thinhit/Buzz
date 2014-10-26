@@ -22,7 +22,7 @@
                         </tags-input>-->
                         <!--<input type="text" class="form-control" ng-model="newProject.members">-->
 
-                        <h3>Array of objects</h3>
+
                         <ui-select multiple ng-model="multipleDemo.selectedPeople" ng-disabled="disabled" width="100%">
                             <ui-select-match placeholder="Select person...">{{$item.firstname + ' ' + $item.lastname}} &lt;{{$item.email}}&gt;</ui-select-match>
                             <ui-select-choices repeat="person in listUserTags | propsFilter: {firstname: $select.search, lastname: $select.search}" ng-click="createNewProject(person)">
@@ -33,7 +33,7 @@
                                 </small>
                             </ui-select-choices>
                         </ui-select>
-                        <p>Selected: {{multipleDemo.selectedPeople}}</p>
+
 
                     </div>
 
