@@ -87,12 +87,11 @@ angular.module('Buzz')
 
                         item.last_conversion.message = resp.message;
                         item.last_conversion.create_at = resp.create_at;
-
-
+                        $scope.conversionDatas.push(resp);
                     }
                 });
 
-                $scope.conversionDatas.push(resp);
+
 
             })
 

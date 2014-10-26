@@ -13,7 +13,7 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="text-center" id='brand-name'>
+            <div class="text-center" id='brand-name' ui-sref="buzz.home">
                 Buzz
             </div>
             <ul class="nav navbar-nav navbar-right">
@@ -27,7 +27,7 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a ui-sref="buzz.setting.userInfo">Thông tin cá nhân</a></li>
-                        <li><a ui-sref="buzz.manage">Cài đặt</a></li>
+                        <li><a ui-sref="buzz.admin.project">Cài đặt</a></li>
                         <li class="divider"></li>
                         <li><a ng-click="logout()">Thoát</a></li>
                     </ul>

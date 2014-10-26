@@ -50,7 +50,7 @@ angular.module('Buzz')
                 $restful.get({table: "Rooms", filter: JSON.stringify(filter) }, function (resp){
                     if(resp.success){
                         $scope.conversionChanel = resp.data;
-                        if(_size(resp.data) > 0){
+                        if(_.size(resp.data) > 0){
                             $state.go('buzz.home.conversion', {conversionId: $scope.conversionChanel[0].id});
                         }
 
