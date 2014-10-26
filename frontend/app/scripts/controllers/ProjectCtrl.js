@@ -27,7 +27,21 @@ angular.module('Buzz')
 
 
             $scope.createNewProject = function (projectInfo) {
-                console.log(projectInfo);
+                var listId = [],
+                    currentUser = $auth.getUser();
+                angular.forEach($scope.multipleDemo.selectedPeople, function (value, key){
+                    listId.push(value.id);
+                });
+
+                listId.push(currentUser.id);
+                $restful.save({table: "Projects"}, {
+                    name: projectInfo.name,
+                    creator: currentUser.id,
+                    member: _.uniq(listId)
+                }, function (resp){
+                    console.log('resp', resp);
+                })
+
             };
 
 
