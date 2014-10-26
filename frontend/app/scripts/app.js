@@ -1,5 +1,5 @@
 'use strict';
-var appAPI = 'http://vsoft.vn:8899';
+var appAPI = 'http://localhost:8888';
 angular
     .module('Buzz', [
         'ngAnimate',
@@ -145,6 +145,7 @@ angular
     .run(['$rootScope', '$state', '$stateParams', '$socket', '$auth' , function ($rootScope, $state, $stateParams, $socket, $auth) {
 
         console.log('Application starting !!!');
+        $auth.setHeaderToken();
 
         $rootScope.currentUser = $auth.getUser();
 

@@ -30,14 +30,16 @@ angular.module('Buzz').factory('$auth', function ($rootScope, $http) {
 
                 })
                 .error(function (error) {
+                    me.clearUser();
                     callback(error, null);
                 })
         },
-        logout: function (callback){
+        logout: function (callback) {
             this.clearUser();
             callback(null, 'oke');
         },
         setUser: function (user) {
+            $http.defaults.headers.common['Authorization'] = user.token;
             window.localStorage.setItem('userLogin', JSON.stringify(user));
         },
         getUser: function () {
@@ -45,16 +47,32 @@ angular.module('Buzz').factory('$auth', function ($rootScope, $http) {
             return (user) ? JSON.parse(user) : {}
 
         },
-        clearUser: function (){
+        clearUser: function () {
             window.localStorage.setItem('userLogin', null);
         },
-        setCurrentProject : function (project){
+        setCurrentProject: function (project) {
             window.localStorage.setItem('currentProject', JSON.stringify(project));
         },
-        getCurrentProject: function (){
+        getCurrentProject: function () {
             var project = window.localStorage.getItem('currentProject');
             return (project) ? JSON.parse(project) : {}
+        },
+        setHeaderToken: function () {
+            try {
+                var token = this.getUser().token;
+                if (token) {
+                    $http.defaults.headers.common['Authorization'] = token;
+
+                } else {
+                    $http.defaults.headers.common['Authorization'] = null;
+                }
+            } catch (err) {
+                $http.defaults.headers.common['Authorization'] = null;
+            }
+
+
         }
+
 
     };
 });

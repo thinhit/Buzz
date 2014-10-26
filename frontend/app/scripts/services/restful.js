@@ -1,7 +1,7 @@
 angular.module('Buzz')
     .service('$restful', ['$resource', '$auth', function $restful($resource, $auth) {
 
-        return $resource(appAPI + '/:api/:table/:id?token=' + $auth.getUser().token, {
+        return $resource(appAPI + '/:api/:table/:id', {
             api: 'api',
             id: '@id',
             table: '@table'

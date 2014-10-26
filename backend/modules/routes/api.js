@@ -10,7 +10,7 @@
 
 
     router.use(function (req, res, next) {
-        var _authToken = req.headers.Authorization || req.query.token,
+        var _authToken = req.headers.authorization || req.query.token,
             _decode,
             errMessage = '';
         if (_authToken) {
