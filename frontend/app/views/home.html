@@ -3,164 +3,175 @@
 -->
 
 
+<section class="row">
+    <section class="col-md-3" id="listGroupBox">
 
-    <section class="row">
-        <section class="col-md-3" id="listGroupBox">
-
-            <section id="listGroupControl" class="row">
-                <button class="btn btn-primary btn-create" data-toggle="modal" data-target="#modal-create-group"><span class="glyphicon glyphicon-plus"></span>&nbsp;Tạo mới
-                </button>
-                <div id="search">
-                    <form action="" class="form">
-                        <input type="text" class="form-control searchBtn" placeholder="Tìm kiếm"
-                               ng-model="searchConversionGroup"/>
-                    </form>
-                </div>
-            </section>
-
-            <section id="listGroup" class="media-list row" nice-scroll fix-size>
-
-                <div class="media " ng-repeat="group in conversionChanel | filter: searchConversionGroup"
-                     ui-sref-active="active" ui-sref="buzz.home.conversion({conversionId: group.id})">
-                    <a class="pull-left" href="">
-                        <img class="media-object img-circle" ng-src="{{group.last_conversion.user.avatar}}" alt="..."
-                             style="width:40px">
-                    </a>
-
-                    <div class="media-body">
-                        <h4 class="media-heading">{{group.name}}
-                            <small am-time-ago="group.last_conversion.create_at"></small>
-                        </h4>
-                        <p>{{group.last_conversion.message}}
-                        </p>
-                    </div>
-                </div>
-                <p ng-show="(conversionChanel | filter:searchConversionGroup).length == 0">Không có kết quả nào được tìm thấy !</p>
-            </section>
-        </section>
-
-        <section class="col-md-6" id="messageBox">
-            <section id="messageBoxControl" class="row">
-
-                <h4>Nhóm dự án Ping Ping</h4>
-
-                <div class="list-member">
-                    <ul class="list-inline">
-                        <li><a href=""><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
-                        <li><a href=""><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
-                        <li><a href=""><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
-                        <li><a href=""><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
-                    </ul>
-`              </div>
-            </section>
-
-            <article id="mainMessage">
-                <div class="wrap" fix-size data-size="110"  nice-scroll scroll-to-bottom  ><!--nice-scroll -->
-                    <div ui-view="messageBox"></div>
-                </div>
-
-            </article>
-
-            <section id="message-send">
-                <textarea name="a" id="" cols="30" rows="10" enter-submit="hehe({a: 123})"></textarea>
-            </section>
-
-        </section>
-
-        <section class="col-md-3" id="activityBox">
-            <button class="btn btn-create btn-block">
-                Lịch sử hoạt động
+        <section id="listGroupControl" class="row">
+            <button class="btn btn-primary btn-create" data-toggle="modal" data-target="#modal-create-group"><span
+                    class="glyphicon glyphicon-plus"></span>&nbsp;Tạo mới
             </button>
-
-            <div id="listActivity">
-                <div class="media">
-                    <p class="activity-date">
-                        <small>3 tiếng trước</small>
-                    </p>
-                    <a class="pull-left" href="">
-                        <img class="media-object"
-                             src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
-                             alt="..."
-                             width="30px" height="30px">
-                    </a>
-
-                    <div class="media-body">
-                        <p><b class="author-name">Thinh Nguyen</b> đã đính kèm một tệp express.pdf </p>
-                    </div>
-                </div>
-
-                <div class="media">
-                    <p class="activity-date">
-                        <small>3 tiếng trước</small>
-                    </p>
-                    <a class="pull-left" href="">
-                        <img class="media-object"
-                             src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
-                             alt="..."
-                             width="30px" height="30px">
-                    </a>
-
-                    <div class="media-body">
-                        <p><b class="author-name">Thinh Nguyen</b> đã đính kèm một tệp express.pdf </p>
-                    </div>
-                </div>
-
-
-                <div class="media">
-                    <p class="activity-date">
-                        <small>3 tiếng trước</small>
-                    </p>
-                    <a class="pull-left" href="">
-                        <img class="media-object"
-                             src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
-                             alt="..."
-                             width="30px" height="30px">
-                    </a>
-
-                    <div class="media-body">
-                        <p><b class="author-name">Thinh Nguyen</b> đã đính kèm một tệp express.pdf </p>
-                    </div>
-                </div>
-
-
-                <div class="media">
-                    <p class="activity-date">
-                        <small>3 tiếng trước</small>
-                    </p>
-                    <a class="pull-left" href="">
-                        <img class="media-object"
-                             src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
-                             alt="..."
-                             width="30px" height="30px">
-                    </a>
-
-                    <div class="media-body">
-                        <p><b class="author-name">Thinh Nguyen</b> đã đính kèm một tệp express.pdf </p>
-                    </div>
-                </div>
-
-
-                <div class="media">
-                    <p class="activity-date">
-                        <small>3 tiếng trước</small>
-                    </p>
-                    <a class="pull-left" href="">
-                        <img class="media-object"
-                             src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
-                             alt="..."
-                             width="30px" height="30px">
-                    </a>
-
-                    <div class="media-body">
-                        <p><b class="author-name">Thinh Nguyen</b> đã đính kèm một tệp express.pdf </p>
-                    </div>
-                </div>
-
-
+            <div id="search">
+                <form action="" class="form">
+                    <input type="text" class="form-control searchBtn" placeholder="Tìm kiếm"
+                           ng-model="searchConversionGroup"/>
+                </form>
             </div>
+        </section>
+
+        <section id="listGroup" class="media-list row" nice-scroll fix-size>
+
+            <div class="media " ng-repeat="group in conversionChanel | filter: searchConversionGroup"
+                 ui-sref-active="active" ui-sref="buzz.home.conversion({conversionId: group.id})">
+                <a class="pull-left" href="">
+                    <img class="media-object img-circle"
+                         ng-src="{{group.last_conversion.user.avatar || 'images/yeoman.png'}}" alt="..."
+                         style="width:40px">
+                </a>
+
+                <div class="media-body">
+                    <h4 class="media-heading">{{group.name}}
+                        <small am-time-ago="group.last_conversion.create_at"></small>
+                    </h4>
+                    <p>{{group.last_conversion.message | limitTo: 50 || 'Không có nội dung chat trong nhóm này'}}
+                    </p>
+                </div>
+            </div>
+            <p ng-show="(conversionChanel | filter:searchConversionGroup).length == 0">Không có kết quả nào được tìm
+                thấy !</p>
         </section>
     </section>
 
+    <section class="col-md-6" id="messageBox">
+        <section id="messageBoxControl" class="row">
+
+            <h4>Nhóm dự án Ping Ping</h4>
+
+            <div class="list-member">
+                <ul class="list-inline">
+                    <li><a href=""><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
+                    <li><a href=""><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
+                    <li><a href=""><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
+                    <li><a href=""><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
+                </ul>
+            </div>
+        </section>
+
+        <article id="mainMessage">
+            <div class="wrap" fix-size data-size="110" nice-scroll scroll-to-bottom><!--nice-scroll -->
+                <div ui-view="messageBox"></div>
+            </div>
+
+        </article>
+
+        <section id="message-send">
+            <textarea name="a" id="" cols="30" rows="10" ng-model="msg" enter-submit="sendMessage(msg)"></textarea>
+
+            <button class="smileButton"
+                    data-toggle="popover"
+                    data-trigger="focus"
+                    title="Dismissible popover"
+                    data-content="And here's some amazing content. It's very engaging. Right?">
+                <i class="fa fa-smile-o"></i>
+                &nbsp;
+            </button>
+
+        </section>
+
+    </section>
+
+    <section class="col-md-3" id="activityBox">
+        <button class="btn btn-create btn-block">
+            Lịch sử hoạt động
+        </button>
+
+        <div id="listActivity">
+            <div class="media">
+                <p class="activity-date">
+                    <small>3 tiếng trước</small>
+                </p>
+                <a class="pull-left" href="">
+                    <img class="media-object"
+                         src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
+                         alt="..."
+                         width="30px" height="30px">
+                </a>
+
+                <div class="media-body">
+                    <p><b class="author-name">Thinh Nguyen</b> đã đính kèm một tệp express.pdf </p>
+                </div>
+            </div>
+
+            <div class="media">
+                <p class="activity-date">
+                    <small>3 tiếng trước</small>
+                </p>
+                <a class="pull-left" href="">
+                    <img class="media-object"
+                         src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
+                         alt="..."
+                         width="30px" height="30px">
+                </a>
+
+                <div class="media-body">
+                    <p><b class="author-name">Thinh Nguyen</b> đã đính kèm một tệp express.pdf </p>
+                </div>
+            </div>
+
+
+            <div class="media">
+                <p class="activity-date">
+                    <small>3 tiếng trước</small>
+                </p>
+                <a class="pull-left" href="">
+                    <img class="media-object"
+                         src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
+                         alt="..."
+                         width="30px" height="30px">
+                </a>
+
+                <div class="media-body">
+                    <p><b class="author-name">Thinh Nguyen</b> đã đính kèm một tệp express.pdf </p>
+                </div>
+            </div>
+
+
+            <div class="media">
+                <p class="activity-date">
+                    <small>3 tiếng trước</small>
+                </p>
+                <a class="pull-left" href="">
+                    <img class="media-object"
+                         src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
+                         alt="..."
+                         width="30px" height="30px">
+                </a>
+
+                <div class="media-body">
+                    <p><b class="author-name">Thinh Nguyen</b> đã đính kèm một tệp express.pdf </p>
+                </div>
+            </div>
+
+
+            <div class="media">
+                <p class="activity-date">
+                    <small>3 tiếng trước</small>
+                </p>
+                <a class="pull-left" href="">
+                    <img class="media-object"
+                         src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
+                         alt="..."
+                         width="30px" height="30px">
+                </a>
+
+                <div class="media-body">
+                    <p><b class="author-name">Thinh Nguyen</b> đã đính kèm một tệp express.pdf </p>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+</section>
 
 
 <ng-include src="'views/partials/create-conversion-group-modal.html'"></ng-include>

@@ -1,65 +1,62 @@
 'use strict';
 
 angular.module('Buzz')
-    .controller('HomeCtrl', ['$scope', '$state', '$http',
-        function ($scope, $state, $http) {
+    .controller('HomeCtrl', ['$scope', '$state', '$http', '$auth', '$restful',
+        function ($scope, $state, $http, $auth, $restful) {
             $scope.conversionLoaded = false;
             $scope.selectedGroup = {};
             $scope.conversionChanel = [];
+            $scope.sendMessage = null;
 
             $scope.newChanel = {
                 name: ''
             };
 
 
+
             $scope.createNewChanel = function (chanel) {
+
                 var saveChanel =
                 {
-                    id: $scope.conversionChanel.length + 1,
-                    create_at: new Date(),
-                    update_at: new Date(),
-                    creator: {
-                        id: 1,
-                        fullname: "Thinh Nguyen",
-                        username: "thinhit",
-                        avatar: "images/avt.jpg"
-                    },
-                    last_conversion: {
-                        user: {
-                            fullname: "Thinh Nguyen",
-                            username: "thinhit",
-                            avatar: "images/avt.jpg"
-                        },
-                        message: "Chao` ca nha :) ",
-                        create_at: new Date()
-                    }
+                    name: chanel.name,
+                    creator: $auth.getUser().id,
+                    project: $auth.getCurrentProject().id
                 };
-                angular.extend(saveChanel, chanel);
-                $scope.conversionChanel.push(saveChanel);
-                $state.go('buzz.home.conversion', {conversionId: saveChanel.id});
-                $('#modal-create-group').modal('hide');
-                $scope.newChanel = {};
+                console.log(saveChanel);
+
+                $restful.save({table: 'Rooms'}, saveChanel, function (resp) {
+                    if (resp.success) {
+                        $scope.conversionChanel.push(resp.data);
+
+                        $state.go('buzz.home.conversion', {conversionId: resp.data.id});
+                        $('#modal-create-group').modal('hide');
+                        $scope.newChanel = {};
+                    }
+                });
+
+
             };
 
-            var getJSON = function (file, callback) {
-                $http.get('scripts/data/' + file + '.json').success(function (resp) {
-                    callback(null, resp);
-                }).error(function (err) {
-                    callback(err, null);
-                })
+            $scope.getListRooms = function () {
+                var filter = [
+                    {
+                        property: 'project',
+                        type: 'text',
+                        comparison:'eq',
+                        value: $auth.getCurrentProject().id
+                    }
+                ];
+                $restful.get({table: "Rooms", filter: JSON.stringify(filter) }, function (resp){
+                    if(resp.success){
+                        $scope.conversionChanel = resp.data;
+
+                    }
+                });
             };
 
 
-            getJSON('chanels', function (err, resp){
-               if(err) throw err;
-                $scope.conversionChanel = resp;
-                $state.go('buzz.home.conversion', {conversionId: $scope.conversionChanel[0].id});
-            });
+            $scope.getListRooms();
 
-
-            $scope.hehe = function (item) {
-                console.log('enterSubmit', item);
-            }
 
         }
     ])

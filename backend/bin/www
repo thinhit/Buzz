@@ -1,11 +1,14 @@
 #!/usr/bin/env node
-var debug = require('debug')('backend');
-var app = require('../app'),
-    socket_handler = require('../socket/socket_handler');
+"use strict";
 
-app.set('port', process.env.PORT || 3000);
+var debug = require('debug')('vbackend');
+var app = require('../app');
+
+var initConfig  = require('../modules/init');
+
+app.set('port', process.env.PORT || initConfig.port);
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
-  socket_handler(server);
 });
+

@@ -22,14 +22,14 @@
                     <a href="" class="dropdown-toggle" data-toggle="dropdown">
                         <img class="member-avatar" height="25" width="25"
                              src="https://trello-avatars.s3.amazonaws.com/bacf95e4cada7a4e2e77c4e35a3dfb30/30.png"
-                             alt="Nguyễn Thịnh (thinhnv)" title="Nguyễn Thịnh (thinhnv)">
-                        Thịnh Nguyễn <span class="caret"></span>
+                             alt="{{currentUser.fullname}} ({{currentUser.username}})" title="{{currentUser.fullname}} ({{currentUser.username}})">
+                        {{currentUser.fullname}}<span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Thông tin cá nhân</a></li>
-                        <li><a ui-sref="buzz.setting">Cài đặt</a></li>
+                        <li><a ui-sref="buzz.setting.userInfo">Thông tin cá nhân</a></li>
+                        <li><a ui-sref="buzz.manage">Cài đặt</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Thoát</a></li>
+                        <li><a ng-click="logout()">Thoát</a></li>
                     </ul>
                 </li>
             </ul>
