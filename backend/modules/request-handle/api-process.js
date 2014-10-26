@@ -161,7 +161,7 @@
 
         me.mongodbSchema[action.tableName].count(function (err, count) {
             ret.total = count;
-            console.log(err, count, ret);
+
             action.res.json(ret);
         });
 

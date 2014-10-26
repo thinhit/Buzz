@@ -25,6 +25,7 @@ angular.module('Buzz')
                 console.log(saveChanel);
 
                 $restful.save({table: 'Rooms'}, saveChanel, function (resp) {
+
                     if (resp.success) {
                         $scope.conversionChanel.push(resp.data);
 

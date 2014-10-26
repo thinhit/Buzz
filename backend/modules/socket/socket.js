@@ -9,7 +9,8 @@
     io.on('connection', function (socket) {
 
         socket.on('new:message', function (msg) {
-            console.log('new:message', msg);
+
+            socket.broadcast.emit('send:message', msg);
             DBCrud.readOne(DBModel.Conversions, msg.conversionId, function (err, resp){
                 if(err){
                     socket.emit('message:send:error');

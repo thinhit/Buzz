@@ -62,6 +62,8 @@ angular.module('Buzz')
                         $scope.$parent.msg = "";
                         $scope.conversionDatas.push(resp.data);
 
+                        console.log('new:message', resp);
+
                         $socket.emit('new:message', {
                             conversionId: resp.data.id
                         });
@@ -78,7 +80,9 @@ angular.module('Buzz')
             };
 
             $socket.on('send:message', function (resp) {
+
                 angular.forEach($scope.$parent.conversionChanel, function (item) {
+
                     if (item.id == resp.room) {
 
                         item.last_conversion.message = resp.message;

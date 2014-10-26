@@ -71,6 +71,7 @@ angular.module('Buzz')
 
                 }
             ];
+
             $restful.get({
                 table: 'Projects',
                 filter: JSON.stringify(filter),
