@@ -7,9 +7,12 @@ angular.module('Buzz')
             $scope.projectDatas = [];
             $scope.listUserTags = [];
 
+
             if (!$auth.getUser()) {
                 $state.go('login');
             }
+
+            $scope.availableColors = ['Red','Green','Blue','Yellow','Magenta','Maroon','Umbra','Turquoise'];
 
             $scope.people = [
                 { name: 'Adam',      email: 'adam@email.com',      age: 12, country: 'United States' },
@@ -23,7 +26,8 @@ angular.module('Buzz')
                 { name: 'Michael',   email: 'michael@email.com',   age: 15, country: 'Colombia' },
                 { name: 'Nicolás',   email: 'nicolas@email.com',    age: 43, country: 'Colombia' }
             ];
-
+            $scope.multipleDemo = {};
+            $scope.multipleDemo.selectedPeople = [];
             listUser.$promise.then(function (resp){
                 $scope.listUserTags = resp.data;
             });

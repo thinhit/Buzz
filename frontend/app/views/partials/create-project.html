@@ -22,13 +22,18 @@
                         </tags-input>-->
                         <!--<input type="text" class="form-control" ng-model="newProject.members">-->
 
-                        <ui-select multiple ng-model="newProject.members">
-                            <ui-select-match placeholder="Select person...">{{$item.name}}
-                                &lt;{{$item.email}}&gt;</ui-select-match>
-                            <ui-select-choices
-                                    repeat="person in people | propsFilter: {name: $select.search, age: $select.search}" >
+                        <h3>Array of objects</h3>
+                        <ui-select multiple ng-model="multipleDemo.selectedPeople" ng-disabled="disabled" width="100%">
+                            <ui-select-match placeholder="Select person...">{{$item.firstname + ' ' + $item.lastname}} &lt;{{$item.email}}&gt;</ui-select-match>
+                            <ui-select-choices repeat="person in listUserTags | propsFilter: {firstname: $select.search, lastname: $select.search}" ng-click="createNewProject(person)">
+                                <div ng-bind-html="person.username | highlight: $select.search"></div>
+                                <small>
+                                    Name: {{person.firstname + ' ' + person.lastname}}
+                                    Email: <span ng-bind-html="''+person.email | highlight: $select.search"></span>
+                                </small>
                             </ui-select-choices>
                         </ui-select>
+                        <p>Selected: {{multipleDemo.selectedPeople}}</p>
 
                     </div>
 
