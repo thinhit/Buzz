@@ -11,7 +11,6 @@
     mongoDBConnect = function () {
     };
 
-
     mongoDBConnect.prototype.connectDB = function () {
         mongose.connect(initConfig.db.mongodb, function (err) {
             if (err)

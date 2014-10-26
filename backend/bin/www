@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 
-var debug = require('debug')('vbackend');
+var debug = require('debug')('buzzBackend');
 var app = require('../app');
 
 var initConfig  = require('../modules/init');

@@ -12,4 +12,5 @@ angular.module('Buzz')
             'query': {method: 'GET', isArray: true},
             'delete': {method: 'DELETE', params: {}}
         });
+
     }]);

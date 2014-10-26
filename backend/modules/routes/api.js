@@ -16,7 +16,6 @@
         if (_authToken) {
             if (token.isExits(_authToken)) {
                 _decode = token.decode(_authToken);
-
                 req.userAuth = _decode;
 
             } else {
@@ -34,7 +33,6 @@
 
             next();
         }
-
     });
 
     router.get('/:tableName', apiProcess.read);

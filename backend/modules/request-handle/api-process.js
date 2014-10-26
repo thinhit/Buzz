@@ -135,6 +135,7 @@
             // callback function run on mongodbCrudAction response data
 
             var cb = function (err, data) {
+
                 me.endProcess(!err, err, action, data);
             };
 
@@ -150,6 +151,7 @@
 
 
     apiProcess.endProcess = function (success, error, action, data) {
+        var me = this;
         var ret = {
             success: success,
             data: data,
@@ -157,7 +159,11 @@
             message: error
         };
 
-        action.res.json(ret);
+        me.mongodbSchema[action.tableName].count(function (err, count) {
+            ret.total = count
+            action.res.json(ret);
+        });
+
 
     };
 
