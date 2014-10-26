@@ -11,7 +11,7 @@ angular
         'ui.router',
         'angularMoment',
         'ngTagsInput',
-        'ui.select2'
+        'ui.select'
     ])
     .config(['$routeProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', function ($routeProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
         $stateProvider
@@ -59,7 +59,28 @@ angular
             .state('buzz.project', {
                 url: "/project",
                 templateUrl: "views/projectList.html",
-                controller: "ProjectCtrl"
+                controller: "ProjectCtrl",
+                resolve: {
+                    listUser: ['$auth', '$state', '$restful', '$q', function ($auth, $state, $restful, $q) {
+                        var defer = $q.defer();
+                        $restful.get({
+                            table: 'Users',
+                            limit: 1000,
+                            start: 0
+                        }, function (resp) {
+                            if (resp.success) {
+
+                                defer.resolve(resp);
+                            }else {
+                                defer.reject();
+                            }
+
+
+                        });
+
+                        return defer.promise;
+                    }]
+                }
             })
             .state('buzz.setting.userInfo', {
                 url: "/user-info",
