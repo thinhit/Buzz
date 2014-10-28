@@ -75,7 +75,8 @@
 
     projectSchema.statics.getPopulation = function () {
         return [
-            ['creator', 'firstname lastname avatar']
+            ['creator', 'firstname lastname avatar'],
+            ['member', 'firstname lastname avatar']
         ];
     };
     mongoDBSchema.Projects = mongoose.model('Projects', projectSchema);
