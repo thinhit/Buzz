@@ -1,11 +1,24 @@
 <div ng-show="conversionLoaded">
 
 <div class="media message-item" ng-repeat="message in conversionDatas track by $index">
-    <a class="pull-left" href="#">
-        <img class="media-object img-circle" src="images/avt.jpg" alt="..." style="width:30px">
+    <a class="pull-left media-object img-circle" href="#" style="padding-left:5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background: #FAFAFA;
+    line-height: 30px;
+    text-align: center;
+    padding-right: 5px;
+    font-weight: bold;
+    border: 1px solid #f2f2f2;
+    
+    margin-right: 5px;
+    ">
+        {{message}}
     </a>
 
     <div class="media-body">
+
         <p class="pull-left col-md-10" >{{message.message}}
         </p>
         <small class="pull-right col-md-2" am-time-ago="message.create_at"></small>

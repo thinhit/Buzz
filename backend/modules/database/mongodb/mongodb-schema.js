@@ -97,6 +97,12 @@
         }
     });
 
+    conversionSchema.statics.getPopulation = function () {
+        return [
+            ['user', 'firstname lastname avatar']
+        ];
+    };
+
     mongoDBSchema.Conversions = mongoose.model('Conversions', conversionSchema);
 
     mongoDBSchema.Users = Users;
