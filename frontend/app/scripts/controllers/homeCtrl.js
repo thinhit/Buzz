@@ -14,8 +14,6 @@ angular.module('Buzz')
             $scope.currentProject = $auth.getCurrentProject();
 
 
-
-
             $scope.createNewChanel = function (chanel) {
 
                 var saveChanel =
@@ -34,7 +32,12 @@ angular.module('Buzz')
                         $state.go('buzz.home.conversion', {conversionId: resp.data.id});
                         $('#modal-create-group').modal('hide');
 
-                        $socket.emit('create:room', saveChanel);
+                        $socket.emit('create:room', {
+                            name: chanel.name,
+                            creator: $auth.getUser().id,
+                            project: $auth.getCurrentProject().id,
+                            id: resp.data.id
+                        });
 
                         $scope.newChanel = {};
                     }
@@ -42,9 +45,14 @@ angular.module('Buzz')
 
             };
 
-            $socket.on('new:room', function (roomdata){
-                if(roomdata.project == $scope.currentProject.id ){
-                    console.log('new:room', roomdata);
+            $socket.on('new:room', function (roomdata) {
+                if (roomdata.project == $scope.currentProject.id) {
+
+                    $restful.get({table: "Rooms", id: roomdata.id}, function (resp) {
+                        if (resp.success) {
+                            $scope.conversionChanel.push(resp.data);
+                        }
+                    });
                 }
             });
 
@@ -53,14 +61,14 @@ angular.module('Buzz')
                     {
                         property: 'project',
                         type: 'text',
-                        comparison:'eq',
+                        comparison: 'eq',
                         value: $auth.getCurrentProject().id
                     }
                 ];
-                $restful.get({table: "Rooms", filter: JSON.stringify(filter) }, function (resp){
-                    if(resp.success){
+                $restful.get({table: "Rooms", filter: JSON.stringify(filter) }, function (resp) {
+                    if (resp.success) {
                         $scope.conversionChanel = resp.data;
-                        if(_.size(resp.data) > 0){
+                        if (_.size(resp.data) > 0) {
                             $state.go('buzz.home.conversion', {conversionId: $scope.conversionChanel[0].id});
                         }
 
