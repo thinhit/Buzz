@@ -11,6 +11,8 @@ angular.module('Buzz')
             $scope.newChanel = {
                 name: ''
             };
+            $scope.currentProject = $auth.getCurrentProject();
+            console.log($scope.currentProject);
 
 
 

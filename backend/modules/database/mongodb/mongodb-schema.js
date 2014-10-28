@@ -61,7 +61,7 @@
         "name": {type: String, required: true},
         "creator": {type: ObjectId, required: true, ref: "Users"},
         "thumb": {type: String},
-        "member": {type: Array},
+        "member": [{type: ObjectId, ref: "Users"}],
         "create_at": {type: Date, default: Date.now, required: true},
         "update_at": {type: Date, default: Date.now}
     }, {

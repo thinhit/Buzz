@@ -41,6 +41,7 @@ angular.module('Buzz')
                     creator: currentUser.id,
                     member: _.uniq(listId)
                 }, function (resp){
+                    $('#modal-create-project').modal('hide');
                     console.log('resp', resp);
                 })
 
@@ -78,7 +79,7 @@ angular.module('Buzz')
                 start: 0,
                 limit: 1000
             }, function (resp) {
-                $('#modal-create-project').modal('hide');
+
                 if (resp.success) {
                     $scope.projectDatas = resp.data;
                 }
