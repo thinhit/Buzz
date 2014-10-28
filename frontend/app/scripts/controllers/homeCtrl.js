@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('Buzz')
-    .controller('HomeCtrl', ['$scope', '$state', '$http', '$auth', '$restful',
-        function ($scope, $state, $http, $auth, $restful) {
+    .controller('HomeCtrl', ['$scope', '$state', '$http', '$auth', '$restful', '$socket',
+        function ($scope, $state, $http, $auth, $restful, $socket) {
             $scope.conversionLoaded = false;
             $scope.selectedGroup = {};
             $scope.conversionChanel = [];
@@ -12,7 +12,7 @@ angular.module('Buzz')
                 name: ''
             };
             $scope.currentProject = $auth.getCurrentProject();
-            console.log($scope.currentProject);
+
 
 
 
@@ -33,12 +33,20 @@ angular.module('Buzz')
 
                         $state.go('buzz.home.conversion', {conversionId: resp.data.id});
                         $('#modal-create-group').modal('hide');
+
+                        $socket.emit('create:room', saveChanel);
+
                         $scope.newChanel = {};
                     }
                 });
 
-
             };
+
+            $socket.on('new:room', function (roomdata){
+                if(roomdata.project == $scope.currentProject.id ){
+                    console.log('new:room', roomdata);
+                }
+            });
 
             $scope.getListRooms = function () {
                 var filter = [

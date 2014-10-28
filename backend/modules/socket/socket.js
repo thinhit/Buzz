@@ -16,12 +16,16 @@
                     socket.emit('message:send:error');
                 }else {
                     socket.broadcast.emit('send:message', resp);
-                    console.log('send:message', resp);
+
                 }
 
             })
 
         });
+
+        socket.on('create:room', function (room){
+            socket.broadcast.emit('new:room', room);
+        })
 
 
     });
