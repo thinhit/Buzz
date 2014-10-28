@@ -32,16 +32,24 @@ angular.module('Buzz')
             restrict: 'A',
             link: function (scope, ele, attrs) {
                 var win = angular.element($window);
+                scope.scroll = function (){
+                    return ele[0].scrollHeight;
+                };
 
-                console.log('hello', ele[0].scrollHeight);
+                scope.$watch('scroll', function (){
+                    $('.wrap').scrollTop(1000000);
+                    console.log('Scroll change');
+                });
+
+
 
                 ele.bind("resize", function (e) {
-                    ele.scrollTop(1000000);
-                    console.log('hello', ele[0].scrollHeight);
+                    $('.wrap').scrollTop(1000000);
+
                 });
 
                 setTimeout(function () {
-                    ele.scrollTop(1000000);
+                    $('.wrap').scrollTop(1000000);
                     scope.$apply();
                 }, 0);
 

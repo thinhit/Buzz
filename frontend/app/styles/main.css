@@ -184,7 +184,7 @@ nav ul.navbar-nav>li>a{
 #mainMessage .wrap{
     /* position: absolute; */
     /* height:400px; */
-    /*overflow-y: scroll;*/
+    overflow-y: scroll;
 }
 #wrapper #messageBox #message-send{
     margin-top:10px;
