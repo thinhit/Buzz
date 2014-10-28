@@ -90,10 +90,19 @@
 
     mongodbCrud.create = function (mongoSchemaName, data, callback) {
         /*var item = new mongoSchemaName(data);*/
-        var fn = mongoSchemaName.create(data);
+        var me = this;
+        var fn = mongoSchemaName.create(data, function (err ,resp){
+            if(!err){
+                me.readOne(mongoSchemaName, resp.id, function(e, res){
+                    callback(e, res);
+                })
+            }else{
+                callback(err ,resp);
+            }
+        });
 
 
-        var schemaPopulate = [];
+        /*var schemaPopulate = [];
         if (mongoSchemaName.getPopulation != null) {
             schemaPopulate = mongoSchemaName.getPopulation();
         }
@@ -118,7 +127,7 @@
             fn.exec(function (err, docs) {
                 callback(err, docs);
             })
-        }
+        }*/
 
     };
 
