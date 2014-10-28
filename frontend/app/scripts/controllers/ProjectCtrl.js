@@ -6,7 +6,7 @@ angular.module('Buzz')
 
             $scope.projectDatas = [];
             $scope.listUserTags = [];
-
+            $scope.currentUser = $auth.getUser();
 
             if (!$auth.getUser()) {
                 $state.go('login');
@@ -27,24 +27,23 @@ angular.module('Buzz')
 
 
             $scope.createNewProject = function (projectInfo) {
-                var listId = [],
-                    currentUser = $auth.getUser();
+                var listId = [];
 
                 angular.forEach($scope.multipleDemo.selectedPeople, function (value, key){
                     listId.push(value.id);
                 });
 
-                listId.push(currentUser.id);
+                listId.push($scope.currentUser.id);
 
                 $restful.save({table: "Projects"}, {
                     name: projectInfo.name,
-                    creator: currentUser.id,
+                    creator: $scope.currentUser.id,
                     member: _.uniq(listId)
                 }, function (resp){
                     $('#modal-create-project').modal('hide');
                     if(resp.success){
                         toastr.success('Tạo thành công dự án');
-                        $scope.projectDatas.push(resp)
+                        $scope.projectDatas.push(resp.data)
                     }else{
                         toastr.error('Có lỗi xảy ra trong quá trình tạo');
 

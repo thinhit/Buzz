@@ -1,6 +1,6 @@
 <h4>
     <span class="pull-left">Danh sách dự án
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modal-create-project">Tạo dự án</button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modal-create-project" ng-if="currentUser.role == 'admin'">Tạo dự án</button>
     </span>
 
 
