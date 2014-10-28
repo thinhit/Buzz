@@ -1,5 +1,5 @@
 angular.module('Buzz').factory('$socket', function ($rootScope) {
-    var socket = window.io.connect('http://localhost:8889');
+    var socket = window.io.connect('http://thinh.me:8889');
     return {
         on: function (eventName, callback) {
             socket.on(eventName, function () {
