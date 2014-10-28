@@ -36,7 +36,7 @@
                     <h4 class="media-heading">{{group.name}}
                         <small am-time-ago="group.last_conversion.create_at"></small>
                     </h4>
-                    <p>{{group.last_conversion.message | limitTo: 50 || 'Không có nội dung chat trong nhóm này'}}
+                    <p>{{group.last_conversion.message | limitTo: 50 || '   Không có nội dung chat trong nhóm này'}}
                     </p>
                 </div>
             </div>
@@ -48,14 +48,12 @@
     <section class="col-md-6" id="messageBox">
         <section id="messageBoxControl" class="row">
 
-            <h4>Nhóm dự án Ping Ping</h4>
+            <h4>{{currentProject.name}}</h4>
 
             <div class="list-member">
                 <ul class="list-inline">
-                    <li><a href=""><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
-                    <li><a href=""><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
-                    <li><a href=""><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
-                    <li><a href=""><img class="img-circle" src="images/avt.jpg" width="25px"></a></li>
+                    <li class="img-circle" ng-repeat="user in currentProject.member" title="{{user.firstname + ' ' + user.lastname}}"><a href="" >{{user.lastname[0] | uppercase}}</a></li>
+
                 </ul>
             </div>
         </section>
