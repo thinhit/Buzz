@@ -89,20 +89,44 @@
     };
 
     mongodbCrud.create = function (mongoSchemaName, data, callback) {
-        /*var item = new mongoSchemaName(data);*/
-        var me = this;
-        var fn = mongoSchemaName.create(data, function (err ,resp){
-            if(!err){
-                me.readOne(mongoSchemaName, resp.id, function(e, res){
-                    callback(e, res);
-                })
-            }else{
-                callback(err ,resp);
+        var item = new mongoSchemaName(data);
+        item.save(function (err, resp) {
+            if (!err ) {
+                var fn = mongoSchemaName.findById(resp.id);
+
+                var schemaPopulate = [];
+                if (mongoSchemaName.getPopulation != null) {
+                    schemaPopulate = mongoSchemaName.getPopulation();
+                }
+
+
+                if (schemaPopulate.length > 0) {
+
+                    for (var _i = 0, _len = schemaPopulate.length; _i < _len; _i++) {
+                        var populate = schemaPopulate[_i];
+                        var tableName = populate[0];
+                        var fieldsName = populate[1];
+                        if (fieldsName === '*') {
+                            fn.populate(tableName);
+                        } else {
+                            fn.populate(tableName, fieldsName);
+                        }
+                    }
+
+                    fn.exec(function (err, docs) {
+                        callback(err, docs);
+                    })
+                } else {
+                    fn.exec(function (err, docs) {
+                        callback(err, docs);
+                    })
+                }
+            }else {
+                callback(err, resp);
             }
         });
 
-
-        /*var schemaPopulate = [];
+        var schemaPopulate = [];
         if (mongoSchemaName.getPopulation != null) {
             schemaPopulate = mongoSchemaName.getPopulation();
         }
@@ -127,7 +151,7 @@
             fn.exec(function (err, docs) {
                 callback(err, docs);
             })
-        }*/
+        }
 
     };
 
@@ -168,8 +192,8 @@
                 })
             }
             /*mongoSchemaName.findByIdAndUpdate(id, data, function (err, docs) {
-                callback(err, docs);
-            })*/
+             callback(err, docs);
+             })*/
         }
 
 
