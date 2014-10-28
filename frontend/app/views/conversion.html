@@ -13,8 +13,8 @@
     border: 1px solid #f2f2f2;
     
     margin-right: 5px;
-    ">
-        {{message}}
+    " title="{{message.user.firstname + ' ' + message.user.lastname}}">
+        {{message.user.lastname[0] | uppercase}}
     </a>
 
     <div class="media-body">
