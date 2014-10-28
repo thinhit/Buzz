@@ -42,7 +42,13 @@ angular.module('Buzz')
                     member: _.uniq(listId)
                 }, function (resp){
                     $('#modal-create-project').modal('hide');
-                    console.log('resp', resp);
+                    if(resp.success){
+                        toastr.success('Tạo thành công dự án');
+                        $scope.projectDatas.push(resp)
+                    }else{
+                        toastr.error('Có lỗi xảy ra trong quá trình tạo');
+
+                    }
                 })
 
             };
